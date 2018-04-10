@@ -65,7 +65,7 @@ public class FlowDe implements Serializable {
 	@PropertyDef(label = "匹配客户属性", description = "")
 	private String matchingCustomers;
 
-	@Column(name = "Packet_NUMBER_", length = 40)
+	@Column(name = "PACKET_NUMBER_", length = 40)
 	@PropertyDef(label = "中包数量", description = "")
 	private String packetNumber;
 
