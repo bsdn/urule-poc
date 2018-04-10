@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<listener>
+		<listener-class>com.bstek.dorado.web.servlet.SpringContextLoaderListener</listener-class>
+	</listener>
+	<filter>
+	  <filter-name>springSecurityFilterChain</filter-name>
+	  <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<listener>
+	    <listener-class>
+	      org.springframework.security.web.session.HttpSessionEventPublisher
+	    </listener-class>
+	</listener>
+	<filter-mapping>
+	  <filter-name>springSecurityFilterChain</filter-name>
+	  <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<servlet-name>uruleServlet</servlet-name>
+		<servlet-class>com.bstek.urule.console.servlet.URuleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>uruleServlet</servlet-name>
+		<url-pattern>/urule/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>doradoServlet</servlet-name>
+		<servlet-class>com.bstek.dorado.web.servlet.DoradoServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>doradoServlet</servlet-name>
+		<url-pattern>*.d</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>doradoServlet</servlet-name>
+		<url-pattern>*.dpkg</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>doradoServlet</servlet-name>
+		<url-pattern>/dorado/*</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<!-- 连接池 启用 Web 监控统计功能    start-->
+    <filter>
+       <filter-name>DruidWebStatFilter</filter-name>
+       <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+       <init-param>
+           <param-name>exclusions</param-name >
+           <param-value>/static/*,*.js,*.css,/druid/*,*.jsp,*.swf,*.ico</param-value>
+       </init-param>
+    </filter>
+    <filter-mapping>
+       <filter-name>DruidWebStatFilter</filter-name>
+       <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <servlet>
+       <servlet-name>DruidStatView</servlet-name>
+       <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+       <servlet-name>DruidStatView</servlet-name>
+       <url-pattern>/druid/*</url-pattern>
+    </servlet-mapping>
+    <!-- 连接池 启用 Web 监控统计功能    end-->
+    
+    
+    <welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
