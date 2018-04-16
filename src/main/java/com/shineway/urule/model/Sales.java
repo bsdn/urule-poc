@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.bstek.dorado.annotation.PropertyDef;
+import com.bstek.urule.model.Label;
 
 /**
  * 附件6-销量
@@ -18,18 +19,11 @@ import com.bstek.dorado.annotation.PropertyDef;
 @Entity
 @Table(name = "POC_SALES")
 public class Sales implements Serializable {
-
-	/**
-	 * 
-	 */
+    
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "UUID_", length = 40)
 	private String uuid;
-	
-	@Column(name = "DATE_")
-	@PropertyDef(label = "月", description = "")
-	private String date;
 	
 	@Column(name = "OFFICE_", length = 40)
 	@PropertyDef(label = "省办", description = "")
@@ -38,43 +32,42 @@ public class Sales implements Serializable {
 	@Column(name = "TO_DO_", length = 40)
 	@PropertyDef(label = "地办", description = "")
 	private String toDo;
-	
-	@Column(name = "CUSTOMER_ID_", length = 40)
+	@Label("月份")
+	@Column(name = "MONTH_")
+	@PropertyDef(label = "月", description = "")
+	private String month;
+	@Label("客户编码")
+    @Column(name = "CUSTOMER_ID_", length = 40)
 	@PropertyDef(label = "客户编码", description = "")
 	private String customerId;
-	
-	@Column(name = "PARENT_CUSTOMER_", length = 40)
-	@PropertyDef(label = "上级客户", description = "")
-	private String parentCustomer;
-	
-	@Column(name = "PRODUCT_GROUP_", length = 40)
-	@PropertyDef(label = "产品组", description = "")
-	private String productGroup;
-	
+	@Label("产品编号")
 	@Column(name = "PRODUCT_Id_", length = 40)
 	@PropertyDef(label = "产品编号", description = "")
 	private String productId;
-	
+	@Label("产品")
 	@Column(name = "PRODUCT_", length = 255)
 	@PropertyDef(label = "产品", description = "")
 	private String product;
-	
-	@Column(name = "NUMBER_", length = 40)
-	@PropertyDef(label = "数量", description = "")
-	private String number;
-	
+	@Label("中包数量")
 	@Column(name = "Packet_NUMBER_", length = 40)
 	@PropertyDef(label = "中包数量", description = "")
 	private String packetNumber;
-	
-	@Column(name = "MONEY_", length = 40)
-	@PropertyDef(label = "金额", description = "")
-	private String money;
-	
+	@Label("客户属性")
 	@Column(name = "CLIENT_PROPERTY_", length = 40)
 	@PropertyDef(label = "客户属性", description = "")
 	private String clientProperty;
-
+	@Column(name = "NUMBER_", length = 40)
+	@PropertyDef(label = "数量", description = "")
+	private String number;
+	@Column(name = "PARENT_CUSTOMER_", length = 40)
+	@PropertyDef(label = "上级客户", description = "")
+	private String parentCustomer;
+	@Column(name = "MONEY_", length = 40)
+	@PropertyDef(label = "金额", description = "")
+	private String money;
+	@Column(name = "PRODUCT_GROUP_", length = 40)
+	@PropertyDef(label = "产品组", description = "")
+	private String productGroup;
 	@Column(name = "FIRST_CUSTOMER_NUMBER_", length = 40)
 	@PropertyDef(label = "一级客户编号", description = "")
 	private String firstCustomerNumber;
@@ -95,12 +88,12 @@ public class Sales implements Serializable {
 		this.uuid = uuid;
 	}
 
-	public String getDate() {
-		return date;
+	public String getMonth() {
+		return month;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setMonth(String month) {
+		this.month = month;
 	}
 
 	public String getOffice() {

@@ -17,7 +17,7 @@ import com.bstek.dorado.annotation.PropertyDef;
  */
 @Entity
 @Table(name = "POC_FLOWDE")
-public class FlowDe implements Serializable {
+public class FlowDire implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
