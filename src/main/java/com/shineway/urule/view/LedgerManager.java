@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.stereotype.Component;
 
 import com.bstek.bdf2.core.orm.hibernate.HibernateDao;
@@ -20,7 +21,8 @@ public class LedgerManager extends HibernateDao{
     
 	@DataProvider
 	public void paging(Page<Ledger> page){
-    	
+		DetachedCriteria dc = DetachedCriteria.forClass(Ledger.class);
+    	this.pagingQuery(page, dc);
     }
     @Expose
 	public void callRule(Map<String,Object> params){

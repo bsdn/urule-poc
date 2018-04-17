@@ -45,13 +45,13 @@ public class FlowDire implements Serializable {
 	@PropertyDef(label = "省区", description = "")
 	private String provincialArea;
 
-	@Column(name = "PRODUCT_Id_", length = 40)
+	@Column(name = "PRODUCT_NO_", length = 40)
 	@PropertyDef(label = "产品编号", description = "")
-	private String productId;
+	private String productNo;
 
-	@Column(name = "PRODUCT_", length = 255)
+	@Column(name = "PRODUCT_NAME_", length = 255)
 	@PropertyDef(label = "产品", description = "")
-	private String product;
+	private String productName;
 
 	@Column(name = "DISTRIBUTOR_", length = 40)
 	@PropertyDef(label = "经销商", description = "")
@@ -81,9 +81,9 @@ public class FlowDire implements Serializable {
 	@PropertyDef(label = "客户属性", description = "")
 	private String clientProperty;
 
-	@Column(name = "FIRST_CUSTOMER_NUMBER_", length = 40)
+	@Column(name = "FIRST_CUSTOMER_NO_", length = 40)
 	@PropertyDef(label = "一级客户编号", description = "")
-	private String firstCustomerNumber;
+	private String firstCustomerNo;
 
 	@Column(name = "FIRST_CUSTOMER_NAME_", length = 40)
 	@PropertyDef(label = "一级客户名称", description = "")
@@ -137,20 +137,20 @@ public class FlowDire implements Serializable {
 		this.provincialArea = provincialArea;
 	}
 
-	public String getProductId() {
-		return productId;
+	public String getProductNo() {
+		return productNo;
 	}
 
-	public void setProductId(String productId) {
-		this.productId = productId;
+	public void setProductNo(String productNo) {
+		this.productNo = productNo;
 	}
 
-	public String getProduct() {
-		return product;
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setProduct(String product) {
-		this.product = product;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 	public String getDistributor() {
@@ -209,12 +209,12 @@ public class FlowDire implements Serializable {
 		this.clientProperty = clientProperty;
 	}
 
-	public String getFirstCustomerNumber() {
-		return firstCustomerNumber;
+	public String getFirstCustomerNo() {
+		return firstCustomerNo;
 	}
 
-	public void setFirstCustomerNumber(String firstCustomerNumber) {
-		this.firstCustomerNumber = firstCustomerNumber;
+	public void setFirstCustomerNo(String firstCustomerNo) {
+		this.firstCustomerNo = firstCustomerNo;
 	}
 
 	public String getFirstCustomerName() {

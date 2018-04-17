@@ -10,7 +10,7 @@
 	http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 	
-	<context:component-scan base-package="com.shinway.urule"></context:component-scan>
+	<context:component-scan base-package="com.shineway.urule"></context:component-scan>
 
 	<import resource="classpath:urule-console-context.xml" />
 	
