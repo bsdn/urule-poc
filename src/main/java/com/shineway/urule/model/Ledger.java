@@ -16,8 +16,8 @@ import com.bstek.urule.model.Label;
 @Table(name = "POC_LEDGER")
 public class Ledger {
 	@Id
-	@Column(name = "UUID_", length = 40)
-	private String uuid;
+	@Column(name = "ID_", length = 40)
+	private String id;
 	@Label("高开月份")
 	@Column(name = "MONTH_", length = 10)
     private String highMonth;
@@ -312,12 +312,12 @@ public class Ledger {
 		return hasOverplusCurMonth;
 	}
 
-	public String getUuid() {
-		return uuid;
+	public String getId() {
+		return id;
 	}
 
-	public void setUuid(String uuid) {
-		this.uuid = uuid;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getCustomerNo() {

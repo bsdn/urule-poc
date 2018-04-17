@@ -3,15 +3,27 @@ package com.shineway.urule.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.bstek.urule.model.Label;
 
 /**
  * 附件6-流向统计
  * 
  */
+@Entity
+@Table(name = "POC_FLOWDIRE_ANALYSIS")
 public class FlowDireAnalysis implements Serializable {
 	private static final long serialVersionUID = 1L;
-	@Label("流向")
+	@Id
+	@Column(name = "ID_", length = 40)
+	private String id;
+	@Column(name = "LEDGER_ID_", length = 40)
+	private String ledgerId;
+	@Label("流向明细")
 	private List<FlowDire> flowDireList;
 	@Label("高开月份")
     private String highMonth;

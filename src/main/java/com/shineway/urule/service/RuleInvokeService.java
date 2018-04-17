@@ -16,7 +16,7 @@ import com.bstek.urule.runtime.service.KnowledgeService;
 import com.shineway.urule.model.FlowDireAnalysis;
 import com.shineway.urule.model.SendOut;
 @Component
-public class RuleInvokeService {
+public class RuleInvokeService{
 	private static final String TEST = "poc/test";
 	private static final String TESTFLOW = "poc/testFlow";
 	private static final String TESTHASOVERPLUS = "poc/testHasOverplus";

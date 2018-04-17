@@ -3,16 +3,27 @@ package com.shineway.urule.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.bstek.urule.model.Label;
 
 /**
  * 附件5-发货统计
  * 
  */
+@Entity
+@Table(name = "POC_SENDOUT_ANALYSIS")
 public class SendOutAnalysis implements Serializable {
-
+	@Id
+	@Column(name = "ID_", length = 40)
+	private String id;
+	@Column(name = "LEDGER_ID_", length = 40)
+	private String ledgerId;
 	private static final long serialVersionUID = 1L;
-	@Label("发货")
+	@Label("发货明细")
 	private List<SendOut> sendOutList;
 	@Label("1月发货")
 	public int sendOutJan;

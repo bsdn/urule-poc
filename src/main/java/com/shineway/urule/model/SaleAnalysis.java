@@ -2,6 +2,12 @@ package com.shineway.urule.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import com.bstek.urule.model.Label;
 
 /**
@@ -10,8 +16,16 @@ import com.bstek.urule.model.Label;
  *
  * @since 2018-04-16
  */
+@Entity
+@Table(name = "POC_SALE_ANALYSIS")
 public class SaleAnalysis {
-    @Label("销量")
+	@Id
+	@Column(name = "ID_", length = 40)
+	private String id;
+	@Column(name = "LEDGER_ID_", length = 40)
+	private String ledgerId;
+	@Label("销量明细")
+	@Transient
 	private List<Sales> sales;
     @Label("1月销量一级")
 	public int saleJan1;
