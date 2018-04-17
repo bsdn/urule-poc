@@ -24,6 +24,6 @@ public class LedgerManager extends HibernateDao{
     }
     @Expose
 	public void callRule(Map<String,Object> params){
-		
+    	ruleInvokeService.invove(params);
 	}
 }

@@ -3,5 +3,13 @@
   <Arguments/>
   <Context/>
   <Model/>
-  <View/>
+  <View>
+    <Button>
+      <Property name="caption">CallRule</Property>
+      <Property name="action">ajaxAction1</Property>
+    </Button>
+    <AjaxAction id="ajaxAction1">
+      <Property name="service">#callRule</Property>
+    </AjaxAction>
+  </View>
 </ViewConfig>

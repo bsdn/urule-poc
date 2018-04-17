@@ -18,73 +18,129 @@ public class Ledger {
 	@Id
 	@Column(name = "ID_", length = 40)
 	private String id;
+
 	@Label("高开月份")
-	@Column(name = "MONTH_", length = 10)
-    private String highMonth;
+	@Column(name = "HIGH_MONTH_", length = 10)
+	private String highMonth;
+
 	@Label("客户编号")
-	@Column(name = "CUSTOMER_NO_")
+	@Column(name = "CUSTOMER_NO_", length = 50)
 	private String customerNo;
+
 	@Label("客户")
-	@Column(name = "CUSTOMER_NAME_")
+	@Column(name = "CUSTOMER_NAME_", length = 50)
 	private String customerName;
+
 	@Label("商品编号")
+	@Column(name = "PRODUCT_NO_", length = 50)
 	private String productNo;
+
 	@Label("商品")
+	@Column(name = "PRODUCT_NAME_", length = 50)
 	private String productName;
+
 	@Label("销量统计")
 	@Transient
-    private SaleAnalysis saleAnalysis;
-    @Label("流向统计")
-    @Transient
- 	private FlowDireAnalysis flowDireAnalysis;
-    @Label("发货统计")
-    @Transient
- 	private SendOutAnalysis sendOutAnalysis;
+	private SaleAnalysis saleAnalysis;
+	@Label("流向统计")
+	@Transient
+	private FlowDireAnalysis flowDireAnalysis;
+	@Label("发货统计")
+	@Transient
+	private SendOutAnalysis sendOutAnalysis;
+
 	@Label("理论售出")
+	@Column(name = "SALES_THEORY_")
 	private int salesTheory;
+
 	@Label("发货总计")
+	@Column(name = "TOTAL_SENDOUT_")
 	private int totalSendout;
-	
-	//本次计算
+
+	// 本次计算
 	@Label("12月销量一级")
+	@Column(name = "SALE_DEC1_")
 	private int saleDec1;
+
 	@Label("12月销量二级")
+	@Column(name = "SALE_DEC2_")
 	private int saleDec2;
-	
-	/*计算是否消化完1*/
+
+	/* 计算是否消化完1 */
 	@Label("1-11月是否消化完")
+	@Column(name = "HAS_OVERPLUS_JAN_TO_NOV_", length = 50)
 	private String hasOverplusJanToNov;
+
 	@Label("12月是否消化完")
+	@Column(name = "HAS_OVERPLUS_DEC_", length = 50)
 	private String hasOverplusDec;
+
 	@Label("当月是否消化完")
+	@Column(name = "HAS_OVERPLUS_CUR_MONTH_", length = 50)
 	private String hasOverplusCurMonth;
+
 	@Label("高开流向合计1-11月一级")
+	@Column(name = "TOTAL_OF_OVER_JAN_TO_NOV1_")
 	private int totalOfOverJanToNov1;
+
 	@Label("高开流向合计1-11月二级")
+	@Column(name = "TOTAL_OF_OVER_JAN_TO_NOV2_")
 	private int totalOfOverJanToNov2;
+
 	@Label("高开流向合计12月一级")
+	@Column(name = "TOTAL_OF_OVER_JAN_TO_DEC1_")
 	private int totalOfOverJanToDec1;
+
 	@Label("高开流向合计12月二级")
+	@Column(name = "TOTAL_OF_OVER_JAN_TO_DEC2_")
 	private int totalOfOverJanToDec2;
+
 	@Label("期初库存一级")
+	@Column(name = "INVENTORY_OPENING1_")
 	private int inventoryOpening1;
+
 	@Label("期初库存二级")
+	@Column(name = "INVENTORY_OPENING2_")
 	private int inventoryOpening2;
-	/*计算是否消化完2*/
+
+	/* 计算是否消化完2 */
 	@Label("期末库存")
+	@Column(name = "INVENTORY_FINAL_")
 	private int inventoryFinal;
+
 	@Label("本次计算一级")
+	@Column(name = "CALC_LEVEL1_")
 	private int calcLevel1;
+
 	@Label("本次计算二级")
+	@Column(name = "CALC_LEVEL2_")
 	private int calcLevel2;
+
 	@Label("扣除超发货一级")
+	@Column(name = "MORE_LEVEL1_")
 	private int moreLevel1;
+
 	@Label("扣除超发货二级")
+	@Column(name = "MORE_LEVEL2_")
 	private int moreLevel2;
+
 	@Label("本次最终计算一级")
+	@Column(name = "CALC_RESULT1_")
 	private int calcResult1;
+
 	@Label("本次最终计算二级")
+	@Column(name = "CALC_RESULT2_")
 	private int calcResult2;
+
+	// 计算销量
+	@Label("已计算销量1-11月一级")
+	@Column(name = "CALC_SALE_JAN_TO_NOV1_")
+	private int calcSaleJanToNov1;
+	
+	@Label("已计算销量1-11月二级")
+	@Column(name = "CALC_SALE_JAN_TO_NOV2_")
+	private int calcSaleJanToNov2;
+
 	public SendOutAnalysis getSendOutAnalysis() {
 		return sendOutAnalysis;
 	}
@@ -109,12 +165,6 @@ public class Ledger {
 		this.highMonth = highMonth;
 	}
 
-	//计算销量
-	@Label("已计算销量1-11月一级")
-	private int calcSaleJanToNov1;
-	@Label("已计算销量1-11月二级")
-	private int calcSaleJanToNov2;
-	
 	public int getCalcLevel1() {
 		return calcLevel1;
 	}
@@ -178,7 +228,6 @@ public class Ledger {
 	public void setHasOverplusCurMonth(String hasOverplusCurMonth) {
 		this.hasOverplusCurMonth = hasOverplusCurMonth;
 	}
-
 
 	public int getTotalOfOverJanToNov1() {
 		return totalOfOverJanToNov1;
