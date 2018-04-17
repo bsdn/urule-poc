@@ -1,8 +1,11 @@
 package com.shineway.urule;
 
+import org.springframework.stereotype.Component;
+
 import com.bstek.urule.model.library.action.annotation.ActionBean;
 import com.bstek.urule.model.library.action.annotation.ActionMethod;
 import com.bstek.urule.model.library.action.annotation.ActionMethodParameter;
+@Component
 @ActionBean(name = "条件计算")
 public class PocSumAction {
 	
