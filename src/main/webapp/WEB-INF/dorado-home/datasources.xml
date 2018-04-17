@@ -57,22 +57,22 @@
 
 	<bean parent="bdf2.dataSourceRegister">
 		<property name="dataSource" ref="dataSource" />
-		<property name="name" value="mysql" />
+		<property name="name" value="${jdbc.sourceName}" />
 		<property name="asDefault" value="true" />
 	</bean>
 
 	<bean id="sessionFactory" parent="bdf2.sessionFactory">
-		<property name="dataSourceName" value="mysql" />
+		<property name="dataSourceName" value="${jdbc.sourceName}" />
 		<property name="packagesToScan">
 			<list>
-				<value>com.shineway.urule</value>
+				<value>com.shineway.urule.model</value>
 			</list>
 		</property>
 		<property name="entityInterceptor" ref="bdf2.unByteCodeProxyInterceptor" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
-				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.show_sql">${hibernate.showSql}</prop>
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl}</prop>
 			</props>
 		</property>
