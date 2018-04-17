@@ -16,7 +16,7 @@ import com.bstek.dorado.annotation.PropertyDef;
  *
  */
 @Entity
-@Table(name = "POC_FLOWDE")
+@Table(name = "POC_FLOWDIRE")
 public class FlowDire implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -61,7 +61,7 @@ public class FlowDire implements Serializable {
 	@PropertyDef(label = "客户", description = "")
 	private String customer;
 
-	@Column(name = "MATCHINGCUSTOMERS_", length = 40)
+	@Column(name = "MATCHING_CUSTOMERS_", length = 40)
 	@PropertyDef(label = "匹配客户属性", description = "")
 	private String matchingCustomers;
 
