@@ -1,22 +1,44 @@
 package com.shineway.urule.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import com.bstek.urule.model.Label;
 
 /**
  * @author Lucas 台账
  * @since 2018-04-14
  */
+@Entity
+@Table(name = "POC_LEDGER")
 public class Ledger {
-
+	@Id
+	@Column(name = "UUID_", length = 40)
+	private String uuid;
+	@Label("高开月份")
+	@Column(name = "MONTH_", length = 10)
+    private String highMonth;
+	@Label("客户编号")
+	@Column(name = "CUSTOMER_NO_")
+	private String customerNo;
 	@Label("客户")
-    private Customer customer;
+	@Column(name = "CUSTOMER_NAME_")
+	private String customerName;
+	@Label("商品编号")
+	private String productNo;
 	@Label("商品")
-    private Product product;
+	private String productName;
 	@Label("销量统计")
+	@Transient
     private SaleAnalysis saleAnalysis;
-    @Label("流向")
+    @Label("流向统计")
+    @Transient
  	private FlowDireAnalysis flowDireAnalysis;
-    @Label("发货")
+    @Label("发货统计")
+    @Transient
  	private SendOutAnalysis sendOutAnalysis;
 	@Label("理论售出")
 	private int salesTheory;
@@ -77,6 +99,14 @@ public class Ledger {
 
 	public void setFlowDireAnalysis(FlowDireAnalysis flowDireAnalysis) {
 		this.flowDireAnalysis = flowDireAnalysis;
+	}
+
+	public String getHighMonth() {
+		return highMonth;
+	}
+
+	public void setHighMonth(String highMonth) {
+		this.highMonth = highMonth;
 	}
 
 	//计算销量
@@ -262,22 +292,6 @@ public class Ledger {
 		this.calcSaleJanToNov2 = calcSaleJanToNov2;
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
 	public SaleAnalysis getSaleAnalysis() {
 		return saleAnalysis;
 	}
@@ -296,6 +310,46 @@ public class Ledger {
 
 	public String getHasOverplusCurMonth() {
 		return hasOverplusCurMonth;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
+	public String getCustomerNo() {
+		return customerNo;
+	}
+
+	public void setCustomerNo(String customerNo) {
+		this.customerNo = customerNo;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public String getProductNo() {
+		return productNo;
+	}
+
+	public void setProductNo(String productNo) {
+		this.productNo = productNo;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 }

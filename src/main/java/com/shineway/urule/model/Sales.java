@@ -37,17 +37,17 @@ public class Sales implements Serializable {
 	@PropertyDef(label = "月", description = "")
 	private String month;
 	@Label("客户编码")
-    @Column(name = "CUSTOMER_ID_", length = 40)
-	@PropertyDef(label = "客户编码", description = "")
-	private String customerId;
+    @Column(name = "CUSTOMER_NO_", length = 40)
+	@PropertyDef(label = "客户编号", description = "")
+	private String customerNo;
 	@Label("产品编号")
-	@Column(name = "PRODUCT_Id_", length = 40)
+	@Column(name = "PRODUCT_NO_", length = 40)
 	@PropertyDef(label = "产品编号", description = "")
-	private String productId;
+	private String productNO;
 	@Label("产品")
-	@Column(name = "PRODUCT_", length = 255)
+	@Column(name = "PRODUCT_NAME_", length = 255)
 	@PropertyDef(label = "产品", description = "")
-	private String product;
+	private String productName;
 	@Label("中包数量")
 	@Column(name = "Packet_NUMBER_", length = 40)
 	@PropertyDef(label = "中包数量", description = "")
@@ -112,13 +112,6 @@ public class Sales implements Serializable {
 		this.toDo = toDo;
 	}
 
-	public String getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(String customerId) {
-		this.customerId = customerId;
-	}
 
 	public String getParentCustomer() {
 		return parentCustomer;
@@ -136,20 +129,12 @@ public class Sales implements Serializable {
 		this.productGroup = productGroup;
 	}
 
-	public String getProductId() {
-		return productId;
-	}
-
-	public void setProductId(String productId) {
-		this.productId = productId;
-	}
-
 	public String getProduct() {
-		return product;
+		return productName;
 	}
 
 	public void setProduct(String product) {
-		this.product = product;
+		this.productName = product;
 	}
 
 	public String getNumber() {
@@ -206,6 +191,30 @@ public class Sales implements Serializable {
 
 	public void setAuxiliaryColumn(String auxiliaryColumn) {
 		this.auxiliaryColumn = auxiliaryColumn;
+	}
+
+	public String getCustomerNo() {
+		return customerNo;
+	}
+
+	public void setCustomerNo(String customerNo) {
+		this.customerNo = customerNo;
+	}
+
+	public String getProductNO() {
+		return productNO;
+	}
+
+	public void setProductNO(String productNO) {
+		this.productNO = productNO;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 }

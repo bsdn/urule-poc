@@ -25,9 +25,9 @@ public class FlowDire implements Serializable {
 	@Column(name = "UUID_", length = 40)
 	private String uuid;
 
-	@Column(name = "DATE_")
-	@PropertyDef(label = "年月", description = "")
-	private String date;
+	@Column(name = "MONTH_")
+	@PropertyDef(label = "月份", description = "")
+	private String month;
 
 	@Column(name = "CHANNEL_ONE_", length = 40)
 	@PropertyDef(label = "渠道", description = "")
@@ -97,12 +97,12 @@ public class FlowDire implements Serializable {
 		this.uuid = uuid;
 	}
 
-	public String getDate() {
-		return date;
+	public String getMonth() {
+		return month;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setMonth(String month) {
+		this.month = month;
 	}
 
 	public String getChannelOne() {

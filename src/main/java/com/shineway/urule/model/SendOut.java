@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.bstek.dorado.annotation.PropertyDef;
+import com.bstek.urule.model.Label;
 
 /**
  * 附件5-发货基础信息
@@ -48,27 +49,27 @@ public class SendOut implements Serializable {
 	@Column(name = "OFFICE_", length = 40)
 	@PropertyDef(label = "省办", description = "")
 	private String office;
-
-	@Column(name = "CUSTOMER_ID_", length = 40)
+	@Label("客户")
+	@Column(name = "CUSTOMER_NO_", length = 40)
 	@PropertyDef(label = "客户编号", description = "")
-	private String customerId;
+	private String customerNO;
 
 	@Column(name = "CUSTOMER_", length = 40)
 	@PropertyDef(label = "客户", description = "")
 	private String customer;
 
-	@Column(name = "PRODUCT_Id_", length = 40)
+	@Column(name = "PRODUCT_NO_", length = 40)
 	@PropertyDef(label = "产品编号", description = "")
 	private String productId;
-
-	@Column(name = "PRODUCT_", length = 255)
+	@Label("产品")
+	@Column(name = "PRODUCT_NAME_", length = 255)
 	@PropertyDef(label = "产品", description = "")
-	private String product;
+	private String productName;
 
 	@Column(name = "UNIT_PRICE_", length = 40)
 	@PropertyDef(label = "单价(元/件)", description = "")
 	private String unitPrice;
-
+	@Label("中包数量")
 	@Column(name = "Packet_NUMBER_", length = 40)
 	@PropertyDef(label = "中包数量", description = "")
 	private String packetNumber;
@@ -99,7 +100,7 @@ public class SendOut implements Serializable {
 
 	@Column(name = "HIGH_", length = 40)
 	@PropertyDef(label = "是否高开", description = "")
-	private String High;
+	private String high;
 
 	@Column(name = "NO_HIGH_", length = 40)
 	@PropertyDef(label = "是否取消高开", description = "")
@@ -107,7 +108,7 @@ public class SendOut implements Serializable {
 
 	@Column(name = "REMARKS_", length = 255)
 	@PropertyDef(label = "备注", description = "")
-	private String Remarks;
+	private String remarks;
 
 	public String getUuid() {
 		return uuid;
@@ -135,6 +136,10 @@ public class SendOut implements Serializable {
 
 	public String getCauseDeptId() {
 		return causeDeptId;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public void setCauseDeptId(String causeDeptId) {
@@ -165,14 +170,6 @@ public class SendOut implements Serializable {
 		this.office = office;
 	}
 
-	public String getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(String customerId) {
-		this.customerId = customerId;
-	}
-
 	public String getCustomer() {
 		return customer;
 	}
@@ -187,14 +184,6 @@ public class SendOut implements Serializable {
 
 	public void setProductId(String productId) {
 		this.productId = productId;
-	}
-
-	public String getProduct() {
-		return product;
-	}
-
-	public void setProduct(String product) {
-		this.product = product;
 	}
 
 	public String getUnitPrice() {
@@ -262,11 +251,11 @@ public class SendOut implements Serializable {
 	}
 
 	public String getHigh() {
-		return High;
+		return high;
 	}
 
 	public void setHigh(String high) {
-		High = high;
+		this.high = high;
 	}
 
 	public String getNoHigh() {
@@ -278,11 +267,27 @@ public class SendOut implements Serializable {
 	}
 
 	public String getRemarks() {
-		return Remarks;
+		return remarks;
 	}
 
 	public void setRemarks(String remarks) {
-		Remarks = remarks;
+		this.remarks = remarks;
+	}
+
+	public String getCustomerNO() {
+		return customerNO;
+	}
+
+	public void setCustomerNO(String customerNO) {
+		this.customerNO = customerNO;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 }

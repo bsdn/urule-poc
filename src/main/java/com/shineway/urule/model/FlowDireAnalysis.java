@@ -13,6 +13,16 @@ public class FlowDireAnalysis implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Label("流向")
 	private List<FlowDire> flowDireList;
+	@Label("高开月份")
+    private String highMonth;
+	@Label("高开流向合计1-11月一级")
+	private int totalOfOverJanToNov1;
+	@Label("高开流向合计1-11月二级")
+	private int totalOfOverJanToNov2;
+	@Label("高开流向合计12月一级")
+	private int totalOfOverJanToDec1;
+	@Label("高开流向合计12月二级")
+	private int totalOfOverJanToDec2;
 	@Label("1月流向一级")
 	public int flowDireJan1;
 	@Label("1月流向二级")
@@ -69,6 +79,39 @@ public class FlowDireAnalysis implements Serializable {
 	public int flowDireTotal1;
 	@Label("流向合计二级")
 	public int flowDireTotal2;
+	public String getHighMonth() {
+		return highMonth;
+	}
+	public void setHighMonth(String highMonth) {
+		this.highMonth = highMonth;
+	}
+	public int getTotalOfOverJanToNov1() {
+		return totalOfOverJanToNov1;
+	}
+	public void setTotalOfOverJanToNov1(int totalOfOverJanToNov1) {
+		this.totalOfOverJanToNov1 = totalOfOverJanToNov1;
+	}
+	public int getTotalOfOverJanToNov2() {
+		return totalOfOverJanToNov2;
+	}
+	public void setTotalOfOverJanToNov2(int totalOfOverJanToNov2) {
+		this.totalOfOverJanToNov2 = totalOfOverJanToNov2;
+	}
+	public int getTotalOfOverJanToDec1() {
+		return totalOfOverJanToDec1;
+	}
+	public void setTotalOfOverJanToDec1(int totalOfOverJanToDec1) {
+		this.totalOfOverJanToDec1 = totalOfOverJanToDec1;
+	}
+	public int getTotalOfOverJanToDec2() {
+		return totalOfOverJanToDec2;
+	}
+	public void setTotalOfOverJanToDec2(int totalOfOverJanToDec2) {
+		this.totalOfOverJanToDec2 = totalOfOverJanToDec2;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	public List<FlowDire> getFlowDireList() {
 		return flowDireList;
 	}
