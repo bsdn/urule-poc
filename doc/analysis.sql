@@ -1,3 +1,20 @@
 select product_name_ as productName, FIRST_CUSTOMER_NO_ as firstCustomerNo, sum(if(CLIENT_PROPERTY_='一级' && date_=1,packet_Number_,0)) as flowDireJan1, sum(if(CLIENT_PROPERTY_='二级'  && date_=1,packet_Number_,0)) as flowDireJan2, sum(if(CLIENT_PROPERTY_='一级' && date_=2,packet_Number_,0)) as flowDireFeb1, sum(if(CLIENT_PROPERTY_='二级'  && date_=2,packet_Number_,0)) as flowDireFeb2, sum(if(CLIENT_PROPERTY_='一级' && date_=3,packet_Number_,0)) as flowDireMar1, sum(if(CLIENT_PROPERTY_='二级'  && date_=3,packet_Number_,0)) as flowDireMar2, sum(if(CLIENT_PROPERTY_='一级' && date_=4,packet_Number_,0)) as flowDireApr1, sum(if(CLIENT_PROPERTY_='二级'  && date_=4,packet_Number_,0)) as flowDireApr2, sum(if(CLIENT_PROPERTY_='一级' && date_=5,packet_Number_,0)) as flowDireMay1, sum(if(CLIENT_PROPERTY_='二级'  && date_=5,packet_Number_,0)) as flowDireMay2, sum(if(CLIENT_PROPERTY_='一级' && date_=6,packet_Number_,0)) as flowDireJun1, sum(if(CLIENT_PROPERTY_='二级'  && date_=6,packet_Number_,0)) as flowDireJun2, sum(if(CLIENT_PROPERTY_='一级' && date_=7,packet_Number_,0)) as flowDireJul1, sum(if(CLIENT_PROPERTY_='二级'  && date_=7,packet_Number_,0)) as flowDireJul2, sum(if(CLIENT_PROPERTY_='一级' && date_=8,packet_Number_,0)) as flowDireAug1, sum(if(CLIENT_PROPERTY_='二级'  && date_=8,packet_Number_,0)) as flowDireAug2, sum(if(CLIENT_PROPERTY_='一级' && date_=9,packet_Number_,0)) as flowDireSep1, sum(if(CLIENT_PROPERTY_='二级'  && date_=9,packet_Number_,0)) as flowDireSep2, sum(if(CLIENT_PROPERTY_='一级' && date_=10,packet_Number_,0)) as flowDireOct1, sum(if(CLIENT_PROPERTY_='二级'  && date_=10,packet_Number_,0)) as flowDireOct2, sum(if(CLIENT_PROPERTY_='一级' && date_=11,packet_Number_,0)) as flowDireNov1, sum(if(CLIENT_PROPERTY_='二级'  && date_=11,packet_Number_,0)) as flowDireNov2, sum(if(CLIENT_PROPERTY_='一级' && date_=12,packet_Number_,0)) as flowDireDec12, sum(if(CLIENT_PROPERTY_='二级'  && date_=12,packet_Number_,0)) as flowDireDec2 from poc_flowdire where product_name_='通脉颗粒 4克*4袋*80盒' and FIRST_CUSTOMER_NO_='100000';
 
 select product_name_ as productName, CUSTOMER_NO_ as customerNo, sum(if(right(date_,2)='01',packet_Number_,0)) as flowDireJan, sum(if(right(date_,2)='02',packet_Number_,0)) as flowDireFeb, sum(if(right(date_,2)='03',packet_Number_,0)) as flowDireMar, sum(if(right(date_,2)='04',packet_Number_,0)) as flowDireApr, sum(if(right(date_,2)='05',packet_Number_,0)) as flowDireMay, sum(if(right(date_,2)='06',packet_Number_,0)) as flowDireJun, sum(if(right(date_,2)='07',packet_Number_,0)) as flowDireJul, sum(if(right(date_,2)='08',packet_Number_,0)) as flowDireAug, sum(if(right(date_,2)='09',packet_Number_,0)) as flowDireSep, sum(if(right(date_,2)='10',packet_Number_,0)) as flowDireOct, sum(if(right(date_,2)='11',packet_Number_,0)) as flowDireNov, sum(if(right(date_,2)='12',packet_Number_,0)) as flowDireDec from POC_SEND_OUT where product_name_='通脉颗粒 4克*4袋*80盒' and CUSTOMER_NO_='100000';
+
+
+
+
+insert into poc_sales(OFFICE_,TO_DO_,MONTH_,CUSTOMER_NO_,PRODUCT_NO_,PRODUCT_NAME_,Packet_NUMBER_,CLIENT_PROPERTY_,NUMBER_,PARENT_CUSTOMER_,MONEY_,PRODUCT_GROUP_,FIRST_CUSTOMER_NO_,FIRST_CUSTOMER_NAME_,Auxiliary_column_) select 省办,地办,月,客户编码,产品编码,产品,中包数量,客户属性,件数,上级客户,金额,产品组,一级客户编码,一级客户名称,辅助列 from `附件6-销量`;
+
+
+insert into poc_flowdire(`CHANNEL_ONE_`, `CHANNEL_TWO_`, `CLIENT_PROPERTY_`, `CUSTOMER_`, `DISTRIBUTOR_`, `FIRST_CUSTOMER_NAME_`, `FIRST_CUSTOMER_NO_`, `MATCHING_CUSTOMERS_`, `MONEY_`, `MONTH_`, `NUMBER_`, `OFFICE_`, `PACKET_NUMBER_`, `PRODUCT_NAME_`, `PRODUCT_NO_`, `PROVINCIAL_AREA_`) select 渠道,渠道2,客户属性,客户,经销商,一级客户名称,一级客户编码,匹配客户属性,金额,年月,件数,省办,中包数量,产品1,产品,省区 from `附件4-流向`;
+
+
+insert into poc_send_out(`BOX_PRICE_`, `CAUSE_DEPT_`, `CAUSE_DEPT_ID_`, `CUSTOMER_`, `CUSTOMER_NO_`, `DATE_`, `DISCOUNT_`, `HIGH_`, `HIGH_PRICE_`, `NO_HIGH_`, `NUMBER_`, `OFFICE_`, `OFFICE_ID_`, `Packet_NUMBER_`, `PRODUCT_NO_`, `PRODUCT_NAME_`, `REMARKS_`, `SALES_DOCUMENT_`, `TAX_MONEY_`, `TAX_THOUSAND_MONEY_`, `UNIT_PRICE_`) select 单价元盒,事业部,事业部编码,客户,客户编码,年月,折扣元,是否高开,高开价格,是否取消高开,件数,省办,省办编码,中包数量,产品编码,产品,备注,销售凭证,含税收入元,含税收入千元,单价元件  from `附件5-发货基础表`;
+
+
+43-CG
+73-BU
+78 79 80 期初库存-期末库存
+112-DH 113-DJ

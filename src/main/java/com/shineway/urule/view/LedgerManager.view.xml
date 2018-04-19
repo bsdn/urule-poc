@@ -3,7 +3,7 @@
   <Arguments/>
   <Context/>
   <Model>
-    <DataType name="dataType1">
+    <DataType name="Ledger">
       <Property name="creationType">com.shineway.urule.model.Ledger</Property>
       <PropertyDef name="id">
         <Property></Property>
@@ -89,6 +89,239 @@
         <Property name="dataType">Double</Property>
         <Property name="label">二级</Property>
       </PropertyDef>
+      <PropertyDef name="office">
+        <Property></Property>
+        <Property name="label">省办</Property>
+      </PropertyDef>
+      <PropertyDef name="moreSendoutFlag">
+        <Property></Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="Sales">
+      <Property name="creationType">com.shineway.urule.model.Sales</Property>
+      <PropertyDef name="uuid">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="office">
+        <Property></Property>
+        <Property name="label">省办</Property>
+      </PropertyDef>
+      <PropertyDef name="toDo">
+        <Property></Property>
+        <Property name="label">地办</Property>
+      </PropertyDef>
+      <PropertyDef name="month">
+        <Property></Property>
+        <Property name="label">月</Property>
+      </PropertyDef>
+      <PropertyDef name="firstCustomerNo">
+        <Property></Property>
+        <Property name="label">一级客户编号</Property>
+      </PropertyDef>
+      <PropertyDef name="productNO">
+        <Property></Property>
+        <Property name="label">产品编号</Property>
+      </PropertyDef>
+      <PropertyDef name="productName">
+        <Property></Property>
+        <Property name="label">产品</Property>
+      </PropertyDef>
+      <PropertyDef name="packetNumber">
+        <Property></Property>
+        <Property name="label">中包数量</Property>
+      </PropertyDef>
+      <PropertyDef name="clientProperty">
+        <Property></Property>
+        <Property name="label">客户属性</Property>
+      </PropertyDef>
+      <PropertyDef name="number">
+        <Property></Property>
+        <Property name="label">数量</Property>
+      </PropertyDef>
+      <PropertyDef name="customerNo">
+        <Property></Property>
+        <Property name="label">客户编号</Property>
+      </PropertyDef>
+      <PropertyDef name="parentCustomer">
+        <Property></Property>
+        <Property name="label">上级客户</Property>
+      </PropertyDef>
+      <PropertyDef name="money">
+        <Property></Property>
+        <Property name="label">金额</Property>
+      </PropertyDef>
+      <PropertyDef name="productGroup">
+        <Property></Property>
+        <Property name="label">产品组</Property>
+      </PropertyDef>
+      <PropertyDef name="firstCustomerName">
+        <Property></Property>
+        <Property name="label">一级客户名称</Property>
+      </PropertyDef>
+      <PropertyDef name="auxiliaryColumn">
+        <Property></Property>
+        <Property name="label">辅助列</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="SendOut">
+      <Property name="creationType">com.shineway.urule.model.SendOut</Property>
+      <PropertyDef name="uuid">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="salesDocument">
+        <Property></Property>
+        <Property name="label">销售凭证</Property>
+      </PropertyDef>
+      <PropertyDef name="date">
+        <Property></Property>
+        <Property name="label">年月</Property>
+      </PropertyDef>
+      <PropertyDef name="causeDeptId">
+        <Property></Property>
+        <Property name="label">事业部编号</Property>
+      </PropertyDef>
+      <PropertyDef name="causeDept">
+        <Property></Property>
+        <Property name="label">事业部</Property>
+      </PropertyDef>
+      <PropertyDef name="officeId">
+        <Property></Property>
+        <Property name="label">省办编码</Property>
+      </PropertyDef>
+      <PropertyDef name="office">
+        <Property></Property>
+        <Property name="label">省办</Property>
+      </PropertyDef>
+      <PropertyDef name="customerNO">
+        <Property></Property>
+        <Property name="label">客户编号</Property>
+      </PropertyDef>
+      <PropertyDef name="customer">
+        <Property></Property>
+        <Property name="label">客户</Property>
+      </PropertyDef>
+      <PropertyDef name="productId">
+        <Property></Property>
+        <Property name="label">产品编号</Property>
+      </PropertyDef>
+      <PropertyDef name="productName">
+        <Property></Property>
+        <Property name="label">产品</Property>
+      </PropertyDef>
+      <PropertyDef name="unitPrice">
+        <Property></Property>
+        <Property name="label">单价(元/件)</Property>
+      </PropertyDef>
+      <PropertyDef name="packetNumber">
+        <Property></Property>
+        <Property name="label">中包数量</Property>
+      </PropertyDef>
+      <PropertyDef name="number">
+        <Property></Property>
+        <Property name="label">数量</Property>
+      </PropertyDef>
+      <PropertyDef name="taxMoney">
+        <Property></Property>
+        <Property name="label">含税收入（元）</Property>
+      </PropertyDef>
+      <PropertyDef name="discount">
+        <Property></Property>
+        <Property name="label">折扣（元）</Property>
+      </PropertyDef>
+      <PropertyDef name="taxThousandMoney">
+        <Property></Property>
+        <Property name="label">含税收入（千元）</Property>
+      </PropertyDef>
+      <PropertyDef name="boxPrice">
+        <Property></Property>
+        <Property name="label">单价(元/盒)</Property>
+      </PropertyDef>
+      <PropertyDef name="highPrice">
+        <Property></Property>
+        <Property name="label">高开价格</Property>
+      </PropertyDef>
+      <PropertyDef name="high">
+        <Property></Property>
+        <Property name="label">是否高开</Property>
+      </PropertyDef>
+      <PropertyDef name="noHigh">
+        <Property></Property>
+        <Property name="label">是否取消高开</Property>
+      </PropertyDef>
+      <PropertyDef name="remarks">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="FlowDire">
+      <Property name="creationType">com.shineway.urule.model.FlowDire</Property>
+      <PropertyDef name="uuid">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="month">
+        <Property></Property>
+        <Property name="label">月份</Property>
+      </PropertyDef>
+      <PropertyDef name="channelOne">
+        <Property></Property>
+        <Property name="label">渠道</Property>
+      </PropertyDef>
+      <PropertyDef name="channelTwo">
+        <Property></Property>
+        <Property name="label">渠道2</Property>
+      </PropertyDef>
+      <PropertyDef name="office">
+        <Property></Property>
+        <Property name="label">省办</Property>
+      </PropertyDef>
+      <PropertyDef name="provincialArea">
+        <Property></Property>
+        <Property name="label">省区</Property>
+      </PropertyDef>
+      <PropertyDef name="productNo">
+        <Property></Property>
+        <Property name="label">产品编号</Property>
+      </PropertyDef>
+      <PropertyDef name="productName">
+        <Property></Property>
+        <Property name="label">产品</Property>
+      </PropertyDef>
+      <PropertyDef name="distributor">
+        <Property></Property>
+        <Property name="label">经销商</Property>
+      </PropertyDef>
+      <PropertyDef name="customer">
+        <Property></Property>
+        <Property name="label">客户</Property>
+      </PropertyDef>
+      <PropertyDef name="matchingCustomers">
+        <Property></Property>
+        <Property name="label">匹配客户属性</Property>
+      </PropertyDef>
+      <PropertyDef name="packetNumber">
+        <Property></Property>
+        <Property name="label">中包数量</Property>
+      </PropertyDef>
+      <PropertyDef name="number">
+        <Property></Property>
+        <Property name="label">数量</Property>
+      </PropertyDef>
+      <PropertyDef name="money">
+        <Property></Property>
+        <Property name="label">金额</Property>
+      </PropertyDef>
+      <PropertyDef name="clientProperty">
+        <Property></Property>
+        <Property name="label">客户属性</Property>
+      </PropertyDef>
+      <PropertyDef name="firstCustomerNo">
+        <Property></Property>
+        <Property name="label">一级客户编号</Property>
+      </PropertyDef>
+      <PropertyDef name="firstCustomerName">
+        <Property></Property>
+        <Property name="label">一级客户名称</Property>
+      </PropertyDef>
     </DataType>
   </Model>
   <View>
@@ -96,38 +329,247 @@
       <Property name="currentTab">3</Property>
       <ControlTab>
         <Property name="caption">发货基础表</Property>
+        <Container>
+          <ToolBar>
+            <DataPilot>
+              <Property name="dataSet">dsSendOut</Property>
+            </DataPilot>
+          </ToolBar>
+          <DataSet id="dsSendOut">
+            <Property name="dataType">[SendOut]</Property>
+            <Property name="pageSize">20</Property>
+            <Property name="dataProvider">#pagingSendOut</Property>
+          </DataSet>
+          <DataGrid id="dgSendOut">
+            <Property name="dataSet">dsSendOut</Property>
+            <Property name="readOnly">true</Property>
+            <Property name="stretchColumnsMode">off</Property>
+            <DataColumn name="customerNO">
+              <Property name="property">customerNO</Property>
+            </DataColumn>
+            <DataColumn name="customer">
+              <Property name="property">customer</Property>
+            </DataColumn>
+            <DataColumn name="productId">
+              <Property name="property">productId</Property>
+            </DataColumn>
+            <DataColumn name="productName">
+              <Property name="property">productName</Property>
+            </DataColumn>
+            <DataColumn name="salesDocument">
+              <Property name="property">salesDocument</Property>
+            </DataColumn>
+            <DataColumn name="date">
+              <Property name="property">date</Property>
+            </DataColumn>
+            <DataColumn name="causeDeptId">
+              <Property name="property">causeDeptId</Property>
+            </DataColumn>
+            <DataColumn name="causeDept">
+              <Property name="property">causeDept</Property>
+            </DataColumn>
+            <DataColumn name="officeId">
+              <Property name="property">officeId</Property>
+            </DataColumn>
+            <DataColumn name="office">
+              <Property name="property">office</Property>
+            </DataColumn>
+            <DataColumn name="unitPrice">
+              <Property name="property">unitPrice</Property>
+            </DataColumn>
+            <DataColumn name="packetNumber">
+              <Property name="property">packetNumber</Property>
+            </DataColumn>
+            <DataColumn name="number">
+              <Property name="property">number</Property>
+            </DataColumn>
+            <DataColumn name="taxMoney">
+              <Property name="property">taxMoney</Property>
+            </DataColumn>
+            <DataColumn name="discount">
+              <Property name="property">discount</Property>
+            </DataColumn>
+            <DataColumn name="taxThousandMoney">
+              <Property name="property">taxThousandMoney</Property>
+            </DataColumn>
+            <DataColumn name="boxPrice">
+              <Property name="property">boxPrice</Property>
+            </DataColumn>
+            <DataColumn name="highPrice">
+              <Property name="property">highPrice</Property>
+            </DataColumn>
+            <DataColumn name="high">
+              <Property name="property">high</Property>
+            </DataColumn>
+            <DataColumn name="noHigh">
+              <Property name="property">noHigh</Property>
+            </DataColumn>
+            <DataColumn name="remarks">
+              <Property name="property">remarks</Property>
+            </DataColumn>
+          </DataGrid>
+        </Container>
       </ControlTab>
       <ControlTab>
         <Property name="caption">销量</Property>
+        <Container>
+          <ToolBar>
+            <DataPilot>
+              <Property name="dataSet">dsSales</Property>
+            </DataPilot>
+          </ToolBar>
+          <DataSet id="dsSales">
+            <Property name="dataType">[Sales]</Property>
+            <Property name="pageSize">20</Property>
+            <Property name="dataProvider">#pagingSales</Property>
+          </DataSet>
+          <DataGrid id="dgSales">
+            <Property name="dataSet">dsSales</Property>
+            <Property name="readOnly">true</Property>
+            <Property name="stretchColumnsMode">off</Property>
+            <DataColumn name="firstCustomerNo">
+              <Property name="property">firstCustomerNo</Property>
+            </DataColumn>
+            <DataColumn name="productNO">
+              <Property name="property">productNO</Property>
+            </DataColumn>
+            <DataColumn name="productName">
+              <Property name="property">productName</Property>
+              <Property name="width">350</Property>
+            </DataColumn>
+            <DataColumn name="customerNo">
+              <Property name="property">customerNo</Property>
+            </DataColumn>
+            <DataColumn name="office">
+              <Property name="property">office</Property>
+            </DataColumn>
+            <DataColumn name="toDo">
+              <Property name="property">toDo</Property>
+            </DataColumn>
+            <DataColumn name="month">
+              <Property name="property">month</Property>
+            </DataColumn>
+            <DataColumn name="packetNumber">
+              <Property name="property">packetNumber</Property>
+            </DataColumn>
+            <DataColumn name="clientProperty">
+              <Property name="property">clientProperty</Property>
+            </DataColumn>
+            <DataColumn name="number">
+              <Property name="property">number</Property>
+            </DataColumn>
+            <DataColumn name="parentCustomer">
+              <Property name="property">parentCustomer</Property>
+            </DataColumn>
+            <DataColumn name="money">
+              <Property name="property">money</Property>
+            </DataColumn>
+            <DataColumn name="productGroup">
+              <Property name="property">productGroup</Property>
+            </DataColumn>
+            <DataColumn name="firstCustomerName">
+              <Property name="property">firstCustomerName</Property>
+            </DataColumn>
+            <DataColumn name="auxiliaryColumn">
+              <Property name="property">auxiliaryColumn</Property>
+            </DataColumn>
+          </DataGrid>
+        </Container>
       </ControlTab>
       <ControlTab>
         <Property name="caption">流向</Property>
+        <Container>
+          <ToolBar>
+            <DataPilot>
+              <Property name="dataSet">dsFlowDire</Property>
+            </DataPilot>
+          </ToolBar>
+          <DataSet id="dsFlowDire">
+            <Property name="dataType">[FlowDire]</Property>
+            <Property name="pageSize">20</Property>
+            <Property name="dataProvider">#pagingFlowDire</Property>
+          </DataSet>
+          <DataGrid id="dgFlowDire">
+            <Property name="dataSet">dsFlowDire</Property>
+            <Property name="readOnly">true</Property>
+            <Property name="stretchColumnsMode">off</Property>
+            <DataColumn name="month">
+              <Property name="property">month</Property>
+            </DataColumn>
+            <DataColumn name="channelOne">
+              <Property name="property">channelOne</Property>
+            </DataColumn>
+            <DataColumn name="channelTwo">
+              <Property name="property">channelTwo</Property>
+            </DataColumn>
+            <DataColumn name="office">
+              <Property name="property">office</Property>
+            </DataColumn>
+            <DataColumn name="provincialArea">
+              <Property name="property">provincialArea</Property>
+            </DataColumn>
+            <DataColumn name="productNo">
+              <Property name="property">productNo</Property>
+            </DataColumn>
+            <DataColumn name="productName">
+              <Property name="property">productName</Property>
+            </DataColumn>
+            <DataColumn name="distributor">
+              <Property name="property">distributor</Property>
+            </DataColumn>
+            <DataColumn name="customer">
+              <Property name="property">customer</Property>
+            </DataColumn>
+            <DataColumn name="matchingCustomers">
+              <Property name="property">matchingCustomers</Property>
+            </DataColumn>
+            <DataColumn name="packetNumber">
+              <Property name="property">packetNumber</Property>
+            </DataColumn>
+            <DataColumn name="number">
+              <Property name="property">number</Property>
+            </DataColumn>
+            <DataColumn name="money">
+              <Property name="property">money</Property>
+            </DataColumn>
+            <DataColumn name="clientProperty">
+              <Property name="property">clientProperty</Property>
+            </DataColumn>
+            <DataColumn name="firstCustomerNo">
+              <Property name="property">firstCustomerNo</Property>
+            </DataColumn>
+            <DataColumn name="firstCustomerName">
+              <Property name="property">firstCustomerName</Property>
+            </DataColumn>
+          </DataGrid>
+        </Container>
       </ControlTab>
       <ControlTab>
         <Property name="caption">累计台账</Property>
         <Container>
           <ToolBar>
             <DataPilot>
-              <Property name="dataSet">dataSet1</Property>
+              <Property name="dataSet">dsLedger</Property>
             </DataPilot>
             <Button>
               <Property name="caption">调用规则引擎计算</Property>
               <Property name="action">ajaxAction1</Property>
             </Button>
           </ToolBar>
-          <DataSet id="dataSet1">
+          <DataSet id="dsLedger">
             <Property name="dataProvider">#paging</Property>
-            <Property name="dataType">[dataType1]</Property>
+            <Property name="dataType">[Ledger]</Property>
             <Property name="pageSize">20</Property>
           </DataSet>
           <DataGrid id="dataGrid1">
-            <Property name="dataSet">dataSet1</Property>
+            <Property name="dataSet">dsLedger</Property>
             <Property name="readOnly">true</Property>
             <Property name="stretchColumnsMode">off</Property>
-            <DataColumn name="id">
-              <Property name="property">id</Property>
+            <DataColumn>
+              <Property name="property">office</Property>
               <Property name="align">center</Property>
               <Property name="width">50</Property>
+              <Property name="name">office</Property>
             </DataColumn>
             <DataColumn name="customerNo">
               <Property name="property">customerNo</Property>
@@ -157,6 +599,7 @@
               <DataColumn name="hasOverplusJanToNov">
                 <Property name="property">hasOverplusJanToNov</Property>
                 <Property name="caption">1-11月</Property>
+                <Property name="align">center</Property>
               </DataColumn>
               <DataColumn name="hasOverplusDec">
                 <Property name="property">hasOverplusDec</Property>
@@ -219,7 +662,7 @@
             </ColumnGroup>
           </DataGrid>
           <AjaxAction id="ajaxAction1">
-            <ClientEvent name="beforeExecute">var json = view.get(&quot;#dataSet1&quot;).getData(&quot;#&quot;).toJSON();&#xD;
+            <ClientEvent name="beforeExecute">var json = view.get(&quot;#dsLedger&quot;).getData(&quot;#&quot;).toJSON();&#xD;
 self.set(&quot;parameter&quot;, json);</ClientEvent>
             <Property name="service">#callRule</Property>
           </AjaxAction>

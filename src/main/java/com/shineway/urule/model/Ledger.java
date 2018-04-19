@@ -20,7 +20,14 @@ public class Ledger {
 	@PropertyDef(label = "编号")
 	@Column(name = "ID_", length = 40)
 	private String id;
-
+	
+	@Column(name = "OFFICE_")
+	private String office;
+	
+    @Label("是否超发货")
+	@Column(name = "MORE_SENDOUT_FLAG", length = 10)
+	private String moreSendoutFlag;
+	
 	@Label("高开月份")
 	@PropertyDef(label = "高开月份")
 	@Column(name = "HIGH_MONTH_", length = 10)
@@ -156,6 +163,14 @@ public class Ledger {
 
 	public void setHighMonth(String highMonth) {
 		this.highMonth = highMonth;
+	}
+
+	public String getOffice() {
+		return office;
+	}
+
+	public void setOffice(String office) {
+		this.office = office;
 	}
 
 	public Double getCalcLevel1() {
@@ -336,6 +351,14 @@ public class Ledger {
 
 	public void setProductName(String productName) {
 		this.productName = productName;
+	}
+
+	public String getMoreSendoutFlag() {
+		return moreSendoutFlag;
+	}
+
+	public void setMoreSendoutFlag(String moreSendoutFlag) {
+		this.moreSendoutFlag = moreSendoutFlag;
 	}
 
 }

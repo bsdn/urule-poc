@@ -148,6 +148,19 @@ public class RuleInvokeService extends HibernateDao {
 		String sql = "select product_name_ as productName, FIRST_CUSTOMER_NO_ as customerNo, sum(if(CLIENT_PROPERTY_='一级' && month_=1,packet_Number_,0)) as saleJan1, sum(if(CLIENT_PROPERTY_='二级'  && month_=1,packet_Number_,0)) as saleJan2, sum(if(CLIENT_PROPERTY_='一级' && month_=2,packet_Number_,0)) as saleFeb1, sum(if(CLIENT_PROPERTY_='二级'  && month_=2,packet_Number_,0)) as saleFeb2, sum(if(CLIENT_PROPERTY_='一级' && month_=3,packet_Number_,0)) as saleMar1, sum(if(CLIENT_PROPERTY_='二级'  && month_=3,packet_Number_,0)) as saleMar2, sum(if(CLIENT_PROPERTY_='一级' && month_=4,packet_Number_,0)) as saleApr1, sum(if(CLIENT_PROPERTY_='二级'  && month_=4,packet_Number_,0)) as saleApr2, sum(if(CLIENT_PROPERTY_='一级' && month_=5,packet_Number_,0)) as saleMay1, sum(if(CLIENT_PROPERTY_='二级'  && month_=5,packet_Number_,0)) as saleMay2, sum(if(CLIENT_PROPERTY_='一级' && month_=6,packet_Number_,0)) as saleJun1, sum(if(CLIENT_PROPERTY_='二级'  && month_=6,packet_Number_,0)) as saleJun2, sum(if(CLIENT_PROPERTY_='一级' && month_=7,packet_Number_,0)) as saleJul1, sum(if(CLIENT_PROPERTY_='二级'  && month_=7,packet_Number_,0)) as saleJul2, sum(if(CLIENT_PROPERTY_='一级' && month_=8,packet_Number_,0)) as saleAug1, sum(if(CLIENT_PROPERTY_='二级'  && month_=8,packet_Number_,0)) as saleAug2, sum(if(CLIENT_PROPERTY_='一级' && month_=9,packet_Number_,0)) as saleSep1, sum(if(CLIENT_PROPERTY_='二级'  && month_=9,packet_Number_,0)) as saleSep2, sum(if(CLIENT_PROPERTY_='一级' && month_=10,packet_Number_,0)) as saleOct1, sum(if(CLIENT_PROPERTY_='二级'  && month_=10,packet_Number_,0)) as saleOct2, sum(if(CLIENT_PROPERTY_='一级' && month_=11,packet_Number_,0)) as saleNov1, sum(if(CLIENT_PROPERTY_='二级'  && month_=11,packet_Number_,0)) as saleNov2, sum(if(CLIENT_PROPERTY_='一级' && month_=12,packet_Number_,0)) as saleDec1, sum(if(CLIENT_PROPERTY_='二级'  && month_=12,packet_Number_,0)) as saleDec2 from POC_SALES where product_name_=:productName and FIRST_CUSTOMER_NO_=:customerNo";
 		SaleAnalysis saleAnalysis = (SaleAnalysis) sqlQueryObject(session, params, sql,
 				SaleAnalysis.class);
+		saleAnalysis.setSaleTotal1(saleAnalysis.getSaleJan1()+saleAnalysis.getSaleFeb1());
+		saleAnalysis.setSaleTotal1(saleAnalysis.getSaleTotal1()+saleAnalysis.getSaleMar1()+saleAnalysis.getSaleApr1());
+		saleAnalysis.setSaleTotal1(saleAnalysis.getSaleTotal1()+saleAnalysis.getSaleMay1()+saleAnalysis.getSaleJun1());
+		saleAnalysis.setSaleTotal1(saleAnalysis.getSaleTotal1()+saleAnalysis.getSaleJul1()+saleAnalysis.getSaleAug1());
+		saleAnalysis.setSaleTotal1(saleAnalysis.getSaleTotal1()+saleAnalysis.getSaleSep1()+saleAnalysis.getSaleOct1());
+		saleAnalysis.setSaleTotal1(saleAnalysis.getSaleTotal1()+saleAnalysis.getSaleNov1()+saleAnalysis.getSaleDec1());
+		
+		saleAnalysis.setSaleTotal2(saleAnalysis.getSaleJan2()+saleAnalysis.getSaleFeb2());
+		saleAnalysis.setSaleTotal2(saleAnalysis.getSaleTotal2()+saleAnalysis.getSaleMar2()+saleAnalysis.getSaleApr2());
+		saleAnalysis.setSaleTotal2(saleAnalysis.getSaleTotal2()+saleAnalysis.getSaleMay2()+saleAnalysis.getSaleJun2());
+		saleAnalysis.setSaleTotal2(saleAnalysis.getSaleTotal2()+saleAnalysis.getSaleJul2()+saleAnalysis.getSaleAug2());
+		saleAnalysis.setSaleTotal2(saleAnalysis.getSaleTotal2()+saleAnalysis.getSaleSep2()+saleAnalysis.getSaleOct2());
+		saleAnalysis.setSaleTotal2(saleAnalysis.getSaleTotal2()+saleAnalysis.getSaleNov2()+saleAnalysis.getSaleDec2());
 		/*
 		 * SaleAnalysis saleAnalysis = new SaleAnalysis();
 		 * saleAnalysis.setSaleDec1(2318);//计算本次计算、是否超发货
@@ -159,7 +172,7 @@ public class RuleInvokeService extends HibernateDao {
 	}
 
 	private SendOutAnalysis initSendOutAnalysis(Session session, Map<String, Object> params) {
-		String sql = "select product_name_ as productName, CUSTOMER_NO_ as customerNo, sum(if(right(date_,2)='01',packet_Number_,0)) as sendOutJan, sum(if(right(date_,2)='02',packet_Number_,0)) as sendOutFeb, sum(if(right(date_,2)='03',packet_Number_,0)) as sendOutMar, sum(if(right(date_,2)='04',packet_Number_,0)) as sendOutApr, sum(if(right(date_,2)='05',packet_Number_,0)) as sendOutMay, sum(if(right(date_,2)='06',packet_Number_,0)) as sendOutJun, sum(if(right(date_,2)='07',packet_Number_,0)) as sendOutJul, sum(if(right(date_,2)='08',packet_Number_,0)) as sendOutAug, sum(if(right(date_,2)='09',packet_Number_,0)) as sendOutSep, sum(if(right(date_,2)='10',packet_Number_,0)) as sendOutOct, sum(if(right(date_,2)='11',packet_Number_,0)) as sendOutNov, sum(if(right(date_,2)='12',packet_Number_,0)) as sendOutDec from POC_SEND_OUT where product_name_=:productName and CUSTOMER_NO_=:customerNo";
+		String sql = "select product_name_ as productName, CUSTOMER_NO_ as customerNo, sum(if(right(date_,2)='01',packet_Number_,0)) as sendOutJan, sum(if(right(date_,2)='02',packet_Number_,0)) as sendOutFeb, sum(if(right(date_,2)='03',packet_Number_,0)) as sendOutMar, sum(if(right(date_,2)='04',packet_Number_,0)) as sendOutApr, sum(if(right(date_,2)='05',packet_Number_,0)) as sendOutMay, sum(if(right(date_,2)='06',packet_Number_,0)) as sendOutJun, sum(if(right(date_,2)='07',packet_Number_,0)) as sendOutJul, sum(if(right(date_,2)='08',packet_Number_,0)) as sendOutAug, sum(if(right(date_,2)='09',packet_Number_,0)) as sendOutSep, sum(if(right(date_,2)='10',packet_Number_,0)) as sendOutOct, sum(if(right(date_,2)='11',packet_Number_,0)) as sendOutNov, sum(if(right(date_,2)='12',packet_Number_,0)) as sendOutDec from POC_SEND_OUT where HIGH_='是' and product_name_=:productName and CUSTOMER_NO_=:customerNo";
 		SendOutAnalysis sendOutAnalysis = (SendOutAnalysis) sqlQueryObject(session, params, sql,
 				SendOutAnalysis.class);
 		sendOutAnalysis.setSendOutTotal(sendOutAnalysis.getSendOutJan()+sendOutAnalysis.getSendOutFeb()+sendOutAnalysis.getSendOutMar());
@@ -187,5 +200,30 @@ public class RuleInvokeService extends HibernateDao {
 	public static void main(String[] args) {
 		File arg1 = new File("aa.xml");
 		ClassUtils.classToXml(SendOut.class, arg1);
+	}
+
+	public void invoveRuleHighFlow(Map<String, Object> params) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void invoveRuleHasOverplus(Map<String, Object> params) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void invoveRuleTheroySale(Map<String, Object> params) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void invoveRuleCalcLevel(Map<String, Object> params) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void invoveRuleCalcResultLevel(Map<String, Object> params) {
+		// TODO Auto-generated method stub
+		
 	}
 }

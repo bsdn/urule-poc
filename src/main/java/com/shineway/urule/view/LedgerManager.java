@@ -47,4 +47,28 @@ public class LedgerManager extends HibernateDao{
 	public void callRule(Map<String,Object> params){
     	ruleInvokeService.invove(params);
 	}
+    @Expose
+   	public void callRuleHighFlow(Map<String,Object> params){
+       	ruleInvokeService.invoveRuleHighFlow(params);
+   	}
+    @Expose
+   	public void callRuleHasOverplus(Map<String,Object> params){
+       	ruleInvokeService.invoveRuleHasOverplus(params);
+   	}
+    @Expose
+   	public void callRuleTheroySale(Map<String,Object> params){
+       	ruleInvokeService.invoveRuleTheroySale(params);
+   	}
+    @Expose
+   	public void callRuleCalcLevel(Map<String,Object> params){
+       	ruleInvokeService.invoveRuleCalcLevel(params);
+   	}
+    @Expose
+   	public void callRuleMoreLevel(Map<String,Object> params){
+       	ruleInvokeService.invoveRuleCalcLevel(params);
+   	}
+    @Expose
+   	public void callRuleCalcResultLevel(Map<String,Object> params){
+       	ruleInvokeService.invoveRuleCalcResultLevel(params);
+   	}
 }
