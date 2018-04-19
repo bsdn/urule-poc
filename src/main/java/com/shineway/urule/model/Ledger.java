@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.bstek.dorado.annotation.PropertyDef;
 import com.bstek.urule.model.Label;
 
 /**
@@ -16,25 +17,31 @@ import com.bstek.urule.model.Label;
 @Table(name = "POC_LEDGER")
 public class Ledger {
 	@Id
+	@PropertyDef(label = "编号")
 	@Column(name = "ID_", length = 40)
 	private String id;
 
 	@Label("高开月份")
+	@PropertyDef(label = "高开月份")
 	@Column(name = "HIGH_MONTH_", length = 10)
 	private String highMonth;
 
 	@Label("客户编号")
+	@PropertyDef(label = "客户编号")
 	@Column(name = "CUSTOMER_NO_", length = 50)
 	private String customerNo;
 
+	@PropertyDef(label = "客户")
 	@Label("客户")
 	@Column(name = "CUSTOMER_NAME_", length = 50)
 	private String customerName;
 
+	@PropertyDef(label = "商品编号")
 	@Label("商品编号")
 	@Column(name = "PRODUCT_NO_", length = 50)
 	private String productNo;
 
+	@PropertyDef(label = "商品")
 	@Label("商品")
 	@Column(name = "PRODUCT_NAME_", length = 50)
 	private String productName;
@@ -49,97 +56,83 @@ public class Ledger {
 	@Transient
 	private SendOutAnalysis sendOutAnalysis;
 
+	@PropertyDef(label = "理论售出")
 	@Label("理论售出")
 	@Column(name = "SALES_THEORY_")
-	private int salesTheory;
-
-	@Label("发货总计")
-	@Column(name = "TOTAL_SENDOUT_")
-	private int totalSendout;
-
-	// 本次计算
-	@Label("12月销量一级")
-	@Column(name = "SALE_DEC1_")
-	private int saleDec1;
-
-	@Label("12月销量二级")
-	@Column(name = "SALE_DEC2_")
-	private int saleDec2;
+	private Double salesTheory;
 
 	/* 计算是否消化完1 */
+	@PropertyDef(label = "1-11月是否消化完")
 	@Label("1-11月是否消化完")
 	@Column(name = "HAS_OVERPLUS_JAN_TO_NOV_", length = 50)
 	private String hasOverplusJanToNov;
 
+	@PropertyDef(label = "12月是否消化完")
 	@Label("12月是否消化完")
 	@Column(name = "HAS_OVERPLUS_DEC_", length = 50)
 	private String hasOverplusDec;
 
+	@PropertyDef(label = "当月是否消化完")
 	@Label("当月是否消化完")
 	@Column(name = "HAS_OVERPLUS_CUR_MONTH_", length = 50)
 	private String hasOverplusCurMonth;
 
-	@Label("高开流向合计1-11月一级")
-	@Column(name = "TOTAL_OF_OVER_JAN_TO_NOV1_")
-	private int totalOfOverJanToNov1;
-
-	@Label("高开流向合计1-11月二级")
-	@Column(name = "TOTAL_OF_OVER_JAN_TO_NOV2_")
-	private int totalOfOverJanToNov2;
-
-	@Label("高开流向合计12月一级")
-	@Column(name = "TOTAL_OF_OVER_JAN_TO_DEC1_")
-	private int totalOfOverJanToDec1;
-
-	@Label("高开流向合计12月二级")
-	@Column(name = "TOTAL_OF_OVER_JAN_TO_DEC2_")
-	private int totalOfOverJanToDec2;
-
+	@PropertyDef(label = "一级")
 	@Label("期初库存一级")
 	@Column(name = "INVENTORY_OPENING1_")
-	private int inventoryOpening1;
+	private Double inventoryOpening1;
 
+	@PropertyDef(label = "二级")
 	@Label("期初库存二级")
 	@Column(name = "INVENTORY_OPENING2_")
-	private int inventoryOpening2;
+	private Double inventoryOpening2;
 
 	/* 计算是否消化完2 */
+	@PropertyDef(label = "期末库存")
 	@Label("期末库存")
 	@Column(name = "INVENTORY_FINAL_")
-	private int inventoryFinal;
+	private Double inventoryFinal;
 
+	@PropertyDef(label = "一级")
 	@Label("本次计算一级")
 	@Column(name = "CALC_LEVEL1_")
-	private int calcLevel1;
+	private Double calcLevel1;
 
+	@PropertyDef(label = "二级")
 	@Label("本次计算二级")
 	@Column(name = "CALC_LEVEL2_")
-	private int calcLevel2;
+	private Double calcLevel2;
 
+	@PropertyDef(label = "一级")
 	@Label("扣除超发货一级")
 	@Column(name = "MORE_LEVEL1_")
-	private int moreLevel1;
+	private Double moreLevel1;
 
+	@PropertyDef(label = "二级")
 	@Label("扣除超发货二级")
 	@Column(name = "MORE_LEVEL2_")
-	private int moreLevel2;
+	private Double moreLevel2;
 
+	@PropertyDef(label = "一级")
 	@Label("本次最终计算一级")
 	@Column(name = "CALC_RESULT1_")
-	private int calcResult1;
+	private Double calcResult1;
 
+	@PropertyDef(label = "二级")
 	@Label("本次最终计算二级")
 	@Column(name = "CALC_RESULT2_")
-	private int calcResult2;
+	private Double calcResult2;
 
 	// 计算销量
+	@PropertyDef(label = "一级")
 	@Label("已计算销量1-11月一级")
 	@Column(name = "CALC_SALE_JAN_TO_NOV1_")
-	private int calcSaleJanToNov1;
+	private Double calcSaleJanToNov1;
 	
+	@PropertyDef(label = "二级")
 	@Label("已计算销量1-11月二级")
 	@Column(name = "CALC_SALE_JAN_TO_NOV2_")
-	private int calcSaleJanToNov2;
+	private Double calcSaleJanToNov2;
 
 	public SendOutAnalysis getSendOutAnalysis() {
 		return sendOutAnalysis;
@@ -165,43 +158,43 @@ public class Ledger {
 		this.highMonth = highMonth;
 	}
 
-	public int getCalcLevel1() {
+	public Double getCalcLevel1() {
 		return calcLevel1;
 	}
 
-	public void setCalcLevel1(int calcLevel1) {
+	public void setCalcLevel1(Double calcLevel1) {
 		this.calcLevel1 = calcLevel1;
 	}
 
-	public int getCalcLevel2() {
+	public Double getCalcLevel2() {
 		return calcLevel2;
 	}
 
-	public void setCalcLevel2(int calcLevel2) {
+	public void setCalcLevel2(Double calcLevel2) {
 		this.calcLevel2 = calcLevel2;
 	}
 
-	public int getMoreLevel1() {
+	public Double getMoreLevel1() {
 		return moreLevel1;
 	}
 
-	public void setMoreLevel1(int moreLevel1) {
+	public void setMoreLevel1(Double moreLevel1) {
 		this.moreLevel1 = moreLevel1;
 	}
 
-	public int getMoreLevel2() {
+	public Double getMoreLevel2() {
 		return moreLevel2;
 	}
 
-	public void setMoreLevel2(int moreLevel2) {
+	public void setMoreLevel2(Double moreLevel2) {
 		this.moreLevel2 = moreLevel2;
 	}
 
-	public int getCalcResult1() {
+	public Double getCalcResult1() {
 		return calcResult1;
 	}
 
-	public void setCalcResult1(int calcResult1) {
+	public void setCalcResult1(Double calcResult1) {
 		this.calcResult1 = calcResult1;
 	}
 
@@ -229,115 +222,59 @@ public class Ledger {
 		this.hasOverplusCurMonth = hasOverplusCurMonth;
 	}
 
-	public int getTotalOfOverJanToNov1() {
-		return totalOfOverJanToNov1;
-	}
-
-	public void setTotalOfOverJanToNov1(int totalOfOverJanToNov1) {
-		this.totalOfOverJanToNov1 = totalOfOverJanToNov1;
-	}
-
-	public int getTotalOfOverJanToNov2() {
-		return totalOfOverJanToNov2;
-	}
-
-	public void setTotalOfOverJanToNov2(int totalOfOverJanToNov2) {
-		this.totalOfOverJanToNov2 = totalOfOverJanToNov2;
-	}
-
-	public int getTotalOfOverJanToDec1() {
-		return totalOfOverJanToDec1;
-	}
-
-	public void setTotalOfOverJanToDec1(int totalOfOverJanToDec1) {
-		this.totalOfOverJanToDec1 = totalOfOverJanToDec1;
-	}
-
-	public int getTotalOfOverJanToDec2() {
-		return totalOfOverJanToDec2;
-	}
-
-	public void setTotalOfOverJanToDec2(int totalOfOverJanToDec2) {
-		this.totalOfOverJanToDec2 = totalOfOverJanToDec2;
-	}
-
-	public int getInventoryOpening1() {
+	public Double getInventoryOpening1() {
 		return inventoryOpening1;
 	}
 
-	public void setInventoryOpening1(int inventoryOpening1) {
+	public void setInventoryOpening1(Double inventoryOpening1) {
 		this.inventoryOpening1 = inventoryOpening1;
 	}
 
-	public int getInventoryOpening2() {
+	public Double getInventoryOpening2() {
 		return inventoryOpening2;
 	}
 
-	public void setInventoryOpening2(int inventoryOpening2) {
+	public void setInventoryOpening2(Double inventoryOpening2) {
 		this.inventoryOpening2 = inventoryOpening2;
 	}
 
-	public int getInventoryFinal() {
+	public Double getInventoryFinal() {
 		return inventoryFinal;
 	}
 
-	public void setInventoryFinal(int inventoryFinal) {
+	public void setInventoryFinal(Double inventoryFinal) {
 		this.inventoryFinal = inventoryFinal;
 	}
 
-	public int getCalcResult2() {
+	public Double getCalcResult2() {
 		return calcResult2;
 	}
 
-	public void setCalcResult2(int calcResult2) {
+	public void setCalcResult2(Double calcResult2) {
 		this.calcResult2 = calcResult2;
 	}
 
-	public int getSalesTheory() {
+	public Double getSalesTheory() {
 		return salesTheory;
 	}
 
-	public void setSalesTheory(int salesTheory) {
+	public void setSalesTheory(Double salesTheory) {
 		this.salesTheory = salesTheory;
 	}
 
-	public int getTotalSendout() {
-		return totalSendout;
-	}
-
-	public void setTotalSendout(int totalSendout) {
-		this.totalSendout = totalSendout;
-	}
-
-	public int getSaleDec1() {
-		return saleDec1;
-	}
-
-	public void setSaleDec1(int saleDec1) {
-		this.saleDec1 = saleDec1;
-	}
-
-	public int getSaleDec2() {
-		return saleDec2;
-	}
-
-	public void setSaleDec2(int saleDec2) {
-		this.saleDec2 = saleDec2;
-	}
-
-	public int getCalcSaleJanToNov1() {
+	public Double getCalcSaleJanToNov1() {
 		return calcSaleJanToNov1;
 	}
 
-	public void setCalcSaleJanToNov1(int calcSaleJanToNov1) {
+	public void setCalcSaleJanToNov1(Double calcSaleJanToNov1) {
 		this.calcSaleJanToNov1 = calcSaleJanToNov1;
 	}
 
-	public int getCalcSaleJanToNov2() {
+	public Double getCalcSaleJanToNov2() {
 		return calcSaleJanToNov2;
 	}
 
-	public void setCalcSaleJanToNov2(int calcSaleJanToNov2) {
+	public void setCalcSaleJanToNov2(Double calcSaleJanToNov2) {
 		this.calcSaleJanToNov2 = calcSaleJanToNov2;
 	}
 

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.bstek.dorado.annotation.PropertyDef;
 import com.bstek.urule.model.Label;
 
 /**
@@ -28,53 +29,73 @@ public class SendOutAnalysis implements Serializable {
 	@Column(name = "LEDGER_ID_", length = 40)
 	private String ledgerId;
 
+	@Label("客户编号")
+	@PropertyDef(label = "客户编号")
+	@Column(name = "CUSTOMER_NO_", length = 50)
+	private String customerNo;
+
+	@PropertyDef(label = "客户")
+	@Label("客户")
+	@Column(name = "CUSTOMER_NAME_", length = 50)
+	private String customerName;
+
+	@PropertyDef(label = "商品编号")
+	@Label("商品编号")
+	@Column(name = "PRODUCT_NO_", length = 50)
+	private String productNo;
+
+	@PropertyDef(label = "商品")
+	@Label("商品")
+	@Column(name = "PRODUCT_NAME_", length = 50)
+	private String productName;
+	
 	@Label("发货明细")
 	@Transient
 	private List<SendOut> sendOutList;
 
 	@Label("1月发货")
 	@Column(name = "SENDOUT_JAN_")
-	public int sendOutJan;
+	public Double sendOutJan;
 	@Label("2月发货")
 	@Column(name = "SENDOUT_FEB_")
-	public int sendOutFeb;
+	public Double sendOutFeb;
 	@Label("3月发货")
 	@Column(name = "SENDOUT_MAR_")
-	public int sendOutMar;
+	public Double sendOutMar;
 
 	@Label("4月发货")
-	@Column(name = "SENDOUT_APRI_")
-	public int sendOutApri;
+	@Column(name = "SENDOUT_APR_")
+	public Double sendOutApr;
 	@Label("5月发货")
 	@Column(name = "SENDOUT_MAY_")
-	public int sendOutMay;
+	public Double sendOutMay;
 	@Label("6月发货")
 	@Column(name = "SENDOUT_JUN_")
-	public int sendOutJun;
+	public Double sendOutJun;
 
 	@Label("7月发货")
 	@Column(name = "SENDOUT_JUL_")
-	public int sendOutJul;
+	public Double sendOutJul;
 	@Label("8月发货")
 	@Column(name = "SENDOUT_AUG_")
-	public int sendOutAug;
+	public Double sendOutAug;
 	@Label("9月发货")
 	@Column(name = "SENDOUT_SEP_")
-	public int sendOutSep;
+	public Double sendOutSep;
 
 	@Label("10月发货")
 	@Column(name = "SENDOUT_OCT_")
-	public int sendOutOct;
+	public Double sendOutOct;
 	@Label("11月发货")
 	@Column(name = "SENDOUT_NOV_")
-	public int sendOutNov;
+	public Double sendOutNov;
 	@Label("12月发货")
 	@Column(name = "SENDOUT_DEC_")
-	public int sendOutDec;
+	public Double sendOutDec;
 
 	@Label("发货合计")
 	@Column(name = "SENDOUT_TOTAL_")
-	public int sendOutTotal;
+	public Double sendOutTotal;
 
 	public List<SendOut> getSendOutList() {
 		return sendOutList;
@@ -84,108 +105,160 @@ public class SendOutAnalysis implements Serializable {
 		this.sendOutList = sendOutList;
 	}
 
-	public int getSendOutJan() {
+	public Double getSendOutJan() {
 		return sendOutJan;
 	}
 
-	public void setSendOutJan(int sendOutJan) {
+	public void setSendOutJan(Double sendOutJan) {
 		this.sendOutJan = sendOutJan;
 	}
 
-	public int getSendOutFeb() {
+	public Double getSendOutFeb() {
 		return sendOutFeb;
 	}
 
-	public void setSendOutFeb(int sendOutFeb) {
+	public void setSendOutFeb(Double sendOutFeb) {
 		this.sendOutFeb = sendOutFeb;
 	}
 
-	public int getSendOutMar() {
+	public Double getSendOutMar() {
 		return sendOutMar;
 	}
 
-	public void setSendOutMar(int sendOutMar) {
+	public void setSendOutMar(Double sendOutMar) {
 		this.sendOutMar = sendOutMar;
 	}
 
-	public int getSendOutApri() {
-		return sendOutApri;
+	public Double getSendOutApr() {
+		return sendOutApr;
 	}
 
-	public void setSendOutApri(int sendOutApri) {
-		this.sendOutApri = sendOutApri;
+	public void setSendOutApr(Double sendOutApr) {
+		this.sendOutApr = sendOutApr;
 	}
 
-	public int getSendOutMay() {
+	public Double getSendOutMay() {
 		return sendOutMay;
 	}
 
-	public void setSendOutMay(int sendOutMay) {
+	public void setSendOutMay(Double sendOutMay) {
 		this.sendOutMay = sendOutMay;
 	}
 
-	public int getSendOutJun() {
+	public Double getSendOutJun() {
 		return sendOutJun;
 	}
 
-	public void setSendOutJun(int sendOutJun) {
+	public void setSendOutJun(Double sendOutJun) {
 		this.sendOutJun = sendOutJun;
 	}
 
-	public int getSendOutJul() {
+	public Double getSendOutJul() {
 		return sendOutJul;
 	}
 
-	public void setSendOutJul(int sendOutJul) {
+	public void setSendOutJul(Double sendOutJul) {
 		this.sendOutJul = sendOutJul;
 	}
 
-	public int getSendOutAug() {
+	public Double getSendOutAug() {
 		return sendOutAug;
 	}
 
-	public void setSendOutAug(int sendOutAug) {
+	public void setSendOutAug(Double sendOutAug) {
 		this.sendOutAug = sendOutAug;
 	}
 
-	public int getSendOutSep() {
+	public Double getSendOutSep() {
 		return sendOutSep;
 	}
 
-	public void setSendOutSep(int sendOutSep) {
+	public void setSendOutSep(Double sendOutSep) {
 		this.sendOutSep = sendOutSep;
 	}
 
-	public int getSendOutOct() {
+	public Double getSendOutOct() {
 		return sendOutOct;
 	}
 
-	public void setSendOutOct(int sendOutOct) {
+	public void setSendOutOct(Double sendOutOct) {
 		this.sendOutOct = sendOutOct;
 	}
 
-	public int getSendOutNov() {
+	public Double getSendOutNov() {
 		return sendOutNov;
 	}
 
-	public void setSendOutNov(int sendOutNov) {
+	public void setSendOutNov(Double sendOutNov) {
 		this.sendOutNov = sendOutNov;
 	}
 
-	public int getSendOutDec() {
+	public Double getSendOutDec() {
 		return sendOutDec;
 	}
 
-	public void setSendOutDec(int sendOutDec) {
+	public void setSendOutDec(Double sendOutDec) {
 		this.sendOutDec = sendOutDec;
 	}
 
-	public int getSendOutTotal() {
+	public Double getSendOutTotal() {
 		return sendOutTotal;
 	}
 
-	public void setSendOutTotal(int sendOutTotal) {
+	public void setSendOutTotal(Double sendOutTotal) {
 		this.sendOutTotal = sendOutTotal;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getLedgerId() {
+		return ledgerId;
+	}
+
+	public void setLedgerId(String ledgerId) {
+		this.ledgerId = ledgerId;
+	}
+
+	public String getCustomerNo() {
+		return customerNo;
+	}
+
+	public void setCustomerNo(String customerNo) {
+		this.customerNo = customerNo;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public String getProductNo() {
+		return productNo;
+	}
+
+	public void setProductNo(String productNo) {
+		this.productNo = productNo;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

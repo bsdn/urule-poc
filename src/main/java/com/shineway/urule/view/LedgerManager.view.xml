@@ -2,14 +2,229 @@
 <ViewConfig>
   <Arguments/>
   <Context/>
-  <Model/>
+  <Model>
+    <DataType name="dataType1">
+      <Property name="creationType">com.shineway.urule.model.Ledger</Property>
+      <PropertyDef name="id">
+        <Property></Property>
+        <Property name="label">编号</Property>
+      </PropertyDef>
+      <PropertyDef name="customerNo">
+        <Property></Property>
+        <Property name="label">客户编号</Property>
+      </PropertyDef>
+      <PropertyDef name="customerName">
+        <Property></Property>
+        <Property name="label">客户</Property>
+      </PropertyDef>
+      <PropertyDef name="productNo">
+        <Property></Property>
+        <Property name="label">商品编号</Property>
+      </PropertyDef>
+      <PropertyDef name="productName">
+        <Property></Property>
+        <Property name="label">商品</Property>
+      </PropertyDef>
+      <PropertyDef name="highMonth">
+        <Property></Property>
+        <Property name="label">高开月份</Property>
+      </PropertyDef>
+      <PropertyDef name="salesTheory">
+        <Property name="dataType">Double</Property>
+        <Property name="label">理论售出</Property>
+      </PropertyDef>
+      <PropertyDef name="hasOverplusJanToNov">
+        <Property></Property>
+        <Property name="label">1-11月是否消化完</Property>
+      </PropertyDef>
+      <PropertyDef name="hasOverplusDec">
+        <Property></Property>
+        <Property name="label">12月是否消化完</Property>
+      </PropertyDef>
+      <PropertyDef name="hasOverplusCurMonth">
+        <Property></Property>
+        <Property name="label">当月是否消化完</Property>
+      </PropertyDef>
+      <PropertyDef name="inventoryOpening1">
+        <Property name="dataType">Double</Property>
+        <Property name="label">一级</Property>
+      </PropertyDef>
+      <PropertyDef name="inventoryOpening2">
+        <Property name="dataType">Double</Property>
+        <Property name="label">二级</Property>
+      </PropertyDef>
+      <PropertyDef name="inventoryFinal">
+        <Property name="dataType">Double</Property>
+        <Property name="label">期末库存</Property>
+      </PropertyDef>
+      <PropertyDef name="calcLevel1">
+        <Property name="dataType">Double</Property>
+        <Property name="label">一级</Property>
+      </PropertyDef>
+      <PropertyDef name="calcLevel2">
+        <Property name="dataType">Double</Property>
+        <Property name="label">二级</Property>
+      </PropertyDef>
+      <PropertyDef name="moreLevel1">
+        <Property name="dataType">Double</Property>
+        <Property name="label">一级</Property>
+      </PropertyDef>
+      <PropertyDef name="moreLevel2">
+        <Property name="dataType">Double</Property>
+        <Property name="label">二级</Property>
+      </PropertyDef>
+      <PropertyDef name="calcResult1">
+        <Property name="dataType">Double</Property>
+        <Property name="label">一级</Property>
+      </PropertyDef>
+      <PropertyDef name="calcResult2">
+        <Property name="dataType">Double</Property>
+        <Property name="label">二级</Property>
+      </PropertyDef>
+      <PropertyDef name="calcSaleJanToNov1">
+        <Property name="dataType">Double</Property>
+        <Property name="label">一级</Property>
+      </PropertyDef>
+      <PropertyDef name="calcSaleJanToNov2">
+        <Property name="dataType">Double</Property>
+        <Property name="label">二级</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
   <View>
-    <Button>
-      <Property name="caption">CallRule</Property>
-      <Property name="action">ajaxAction1</Property>
-    </Button>
-    <AjaxAction id="ajaxAction1">
-      <Property name="service">#callRule</Property>
-    </AjaxAction>
+    <TabControl>
+      <Property name="currentTab">3</Property>
+      <ControlTab>
+        <Property name="caption">发货基础表</Property>
+      </ControlTab>
+      <ControlTab>
+        <Property name="caption">销量</Property>
+      </ControlTab>
+      <ControlTab>
+        <Property name="caption">流向</Property>
+      </ControlTab>
+      <ControlTab>
+        <Property name="caption">累计台账</Property>
+        <Container>
+          <ToolBar>
+            <DataPilot>
+              <Property name="dataSet">dataSet1</Property>
+            </DataPilot>
+            <Button>
+              <Property name="caption">调用规则引擎计算</Property>
+              <Property name="action">ajaxAction1</Property>
+            </Button>
+          </ToolBar>
+          <DataSet id="dataSet1">
+            <Property name="dataProvider">#paging</Property>
+            <Property name="dataType">[dataType1]</Property>
+            <Property name="pageSize">20</Property>
+          </DataSet>
+          <DataGrid id="dataGrid1">
+            <Property name="dataSet">dataSet1</Property>
+            <Property name="readOnly">true</Property>
+            <Property name="stretchColumnsMode">off</Property>
+            <DataColumn name="id">
+              <Property name="property">id</Property>
+              <Property name="align">center</Property>
+              <Property name="width">50</Property>
+            </DataColumn>
+            <DataColumn name="customerNo">
+              <Property name="property">customerNo</Property>
+              <Property name="width">80</Property>
+            </DataColumn>
+            <DataColumn name="customerName">
+              <Property name="property">customerName</Property>
+              <Property name="width">100</Property>
+            </DataColumn>
+            <DataColumn name="productNo">
+              <Property name="property">productNo</Property>
+              <Property name="width">120</Property>
+            </DataColumn>
+            <DataColumn name="productName">
+              <Property name="property">productName</Property>
+              <Property name="width">330</Property>
+            </DataColumn>
+            <DataColumn name="highMonth">
+              <Property name="property">highMonth</Property>
+              <Property name="align">center</Property>
+            </DataColumn>
+            <DataColumn name="salesTheory">
+              <Property name="property">salesTheory</Property>
+            </DataColumn>
+            <ColumnGroup>
+              <Property name="caption">是否消化完</Property>
+              <DataColumn name="hasOverplusJanToNov">
+                <Property name="property">hasOverplusJanToNov</Property>
+                <Property name="caption">1-11月</Property>
+              </DataColumn>
+              <DataColumn name="hasOverplusDec">
+                <Property name="property">hasOverplusDec</Property>
+                <Property name="caption">12月</Property>
+              </DataColumn>
+              <DataColumn name="hasOverplusCurMonth">
+                <Property name="property">hasOverplusCurMonth</Property>
+                <Property name="caption">当月</Property>
+              </DataColumn>
+            </ColumnGroup>
+            <ColumnGroup>
+              <Property name="caption">期初库存</Property>
+              <DataColumn name="inventoryOpening1">
+                <Property name="property">inventoryOpening1</Property>
+                <Property name="caption">一级</Property>
+              </DataColumn>
+              <DataColumn name="inventoryOpening2">
+                <Property name="property">inventoryOpening2</Property>
+                <Property name="caption">二级</Property>
+              </DataColumn>
+            </ColumnGroup>
+            <DataColumn name="inventoryFinal">
+              <Property name="property">inventoryFinal</Property>
+            </DataColumn>
+            <ColumnGroup>
+              <Property name="caption">本次计算</Property>
+              <DataColumn name="calcLevel1">
+                <Property name="property">calcLevel1</Property>
+              </DataColumn>
+              <DataColumn name="calcLevel2">
+                <Property name="property">calcLevel2</Property>
+              </DataColumn>
+            </ColumnGroup>
+            <ColumnGroup>
+              <Property name="caption">扣除超发货</Property>
+              <DataColumn name="moreLevel1">
+                <Property name="property">moreLevel1</Property>
+              </DataColumn>
+              <DataColumn name="moreLevel2">
+                <Property name="property">moreLevel2</Property>
+              </DataColumn>
+            </ColumnGroup>
+            <ColumnGroup>
+              <Property name="caption">最终本次计算</Property>
+              <DataColumn name="calcResult1">
+                <Property name="property">calcResult1</Property>
+              </DataColumn>
+              <DataColumn name="calcResult2">
+                <Property name="property">calcResult2</Property>
+              </DataColumn>
+            </ColumnGroup>
+            <ColumnGroup>
+              <Property name="caption">1-11月已计算销量</Property>
+              <DataColumn name="calcSaleJanToNov1">
+                <Property name="property">calcSaleJanToNov1</Property>
+              </DataColumn>
+              <DataColumn name="calcSaleJanToNov2">
+                <Property name="property">calcSaleJanToNov2</Property>
+              </DataColumn>
+            </ColumnGroup>
+          </DataGrid>
+          <AjaxAction id="ajaxAction1">
+            <ClientEvent name="beforeExecute">var json = view.get(&quot;#dataSet1&quot;).getData(&quot;#&quot;).toJSON();&#xD;
+self.set(&quot;parameter&quot;, json);</ClientEvent>
+            <Property name="service">#callRule</Property>
+          </AjaxAction>
+        </Container>
+      </ControlTab>
+    </TabControl>
   </View>
 </ViewConfig>

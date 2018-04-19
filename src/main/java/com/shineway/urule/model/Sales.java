@@ -68,9 +68,9 @@ public class Sales implements Serializable {
 	@Column(name = "PRODUCT_GROUP_", length = 40)
 	@PropertyDef(label = "产品组", description = "")
 	private String productGroup;
-	@Column(name = "FIRST_CUSTOMER_NUMBER_", length = 40)
+	@Column(name = "FIRST_CUSTOMER_NO_", length = 40)
 	@PropertyDef(label = "一级客户编号", description = "")
-	private String firstCustomerNumber;
+	private String firstCustomerNo;
 
 	@Column(name = "FIRST_CUSTOMER_NAME_", length = 40)
 	@PropertyDef(label = "一级客户名称", description = "")
@@ -169,12 +169,12 @@ public class Sales implements Serializable {
 		this.clientProperty = clientProperty;
 	}
 
-	public String getFirstCustomerNumber() {
-		return firstCustomerNumber;
+	public String getFirstCustomerNo() {
+		return firstCustomerNo;
 	}
 
-	public void setFirstCustomerNumber(String firstCustomerNumber) {
-		this.firstCustomerNumber = firstCustomerNumber;
+	public void setFirstCustomerNo(String firstCustomerNo) {
+		this.firstCustomerNo = firstCustomerNo;
 	}
 
 	public String getFirstCustomerName() {
