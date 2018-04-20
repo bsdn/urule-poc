@@ -60,16 +60,16 @@ public class LedgerManager extends HibernateDao{
     public void resetLedger(Map<String,Object> params){
     	String id = (String) params.get("id");
     	Ledger ledger = (com.shineway.urule.model.Ledger) this.getSession().get(Ledger.class, id);
-    	ledger.setCalcLevel1(0D);
-    	ledger.setCalcLevel2(0D);
-    	ledger.setSalesTheory(0D);
-    	ledger.setCalcResult1(0D);
-    	ledger.setCalcResult2(0D);
+    	ledger.setCalcLevel1(null);
+    	ledger.setCalcLevel2(null);
+    	ledger.setSalesTheory(null);
+    	ledger.setCalcResult1(null);
+    	ledger.setCalcResult2(null);
     	ledger.setHasOverplusCurMonth(null);
     	ledger.setHasOverplusDec(null);
     	ledger.setHasOverplusJanToNov(null);
-    	ledger.setMoreLevel1(0D);
-    	ledger.setMoreLevel2(0D);
+    	ledger.setMoreLevel1(null);
+    	ledger.setMoreLevel2(null);
     	this.getSession().update(ledger);
     }
     @Expose

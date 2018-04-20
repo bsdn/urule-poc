@@ -32,7 +32,7 @@
       <PropertyDef name="salesTheory">
         <Property name="dataType">Double</Property>
         <Property name="label">理论售出</Property>
-        <Property name="displayFormat">#,###.##</Property>
+        <Property name="displayFormat">#,##0.##</Property>
       </PropertyDef>
       <PropertyDef name="hasOverplusJanToNov">
         <Property></Property>
@@ -49,12 +49,12 @@
       <PropertyDef name="inventoryOpening1">
         <Property name="dataType">Double</Property>
         <Property name="label">一级</Property>
-        <Property name="displayFormat">#,###.##</Property>
+        <Property name="displayFormat">#,##0.##</Property>
       </PropertyDef>
       <PropertyDef name="inventoryOpening2">
         <Property name="dataType">Double</Property>
         <Property name="label">二级</Property>
-        <Property name="displayFormat">#,###.##</Property>
+        <Property name="displayFormat">#,##0.##</Property>
       </PropertyDef>
       <PropertyDef name="inventoryFinal">
         <Property name="dataType">Double</Property>
@@ -64,42 +64,42 @@
       <PropertyDef name="calcLevel1">
         <Property name="dataType">Double</Property>
         <Property name="label">一级</Property>
-        <Property name="displayFormat">#,###.##</Property>
+        <Property name="displayFormat">#,##0.##</Property>
       </PropertyDef>
       <PropertyDef name="calcLevel2">
         <Property name="dataType">Double</Property>
         <Property name="label">二级</Property>
-        <Property name="displayFormat">#,###.##</Property>
+        <Property name="displayFormat">#,##0.##</Property>
       </PropertyDef>
       <PropertyDef name="moreLevel1">
         <Property name="dataType">Double</Property>
         <Property name="label">一级</Property>
-        <Property name="displayFormat">#,###.##</Property>
+        <Property name="displayFormat">#,##0.##</Property>
       </PropertyDef>
       <PropertyDef name="moreLevel2">
         <Property name="dataType">Double</Property>
         <Property name="label">二级</Property>
-        <Property name="displayFormat">#,###.##</Property>
+        <Property name="displayFormat">#,##0.##</Property>
       </PropertyDef>
       <PropertyDef name="calcResult1">
         <Property name="dataType">Double</Property>
         <Property name="label">一级</Property>
-        <Property name="displayFormat">#,###.##</Property>
+        <Property name="displayFormat">#,##0.##</Property>
       </PropertyDef>
       <PropertyDef name="calcResult2">
         <Property name="dataType">Double</Property>
         <Property name="label">二级</Property>
-        <Property name="displayFormat">#,###.##</Property>
+        <Property name="displayFormat">#,##0.##</Property>
       </PropertyDef>
       <PropertyDef name="calcSaleJanToNov1">
         <Property name="dataType">Double</Property>
         <Property name="label">一级</Property>
-        <Property name="displayFormat">#,###.##</Property>
+        <Property name="displayFormat">#,##0.##</Property>
       </PropertyDef>
       <PropertyDef name="calcSaleJanToNov2">
         <Property name="dataType">Double</Property>
         <Property name="label">二级</Property>
-        <Property name="displayFormat">#,###.##</Property>
+        <Property name="displayFormat">#,##0.##</Property>
       </PropertyDef>
       <PropertyDef name="office">
         <Property></Property>
@@ -340,89 +340,6 @@
     <TabControl>
       <Property name="currentTab">3</Property>
       <ControlTab>
-        <Property name="caption">发货基础表</Property>
-        <Container>
-          <ToolBar>
-            <DataPilot>
-              <Property name="dataSet">dsSendOut</Property>
-            </DataPilot>
-          </ToolBar>
-          <DataSet id="dsSendOut">
-            <Property name="dataType">[SendOut]</Property>
-            <Property name="pageSize">20</Property>
-            <Property name="dataProvider">#pagingSendOut</Property>
-          </DataSet>
-          <DataGrid id="dgSendOut">
-            <Property name="dataSet">dsSendOut</Property>
-            <Property name="readOnly">true</Property>
-            <Property name="stretchColumnsMode">off</Property>
-            <DataColumn name="customerNO">
-              <Property name="property">customerNO</Property>
-            </DataColumn>
-            <DataColumn name="customer">
-              <Property name="property">customer</Property>
-            </DataColumn>
-            <DataColumn name="productId">
-              <Property name="property">productId</Property>
-            </DataColumn>
-            <DataColumn name="productName">
-              <Property name="property">productName</Property>
-            </DataColumn>
-            <DataColumn name="salesDocument">
-              <Property name="property">salesDocument</Property>
-            </DataColumn>
-            <DataColumn name="date">
-              <Property name="property">date</Property>
-            </DataColumn>
-            <DataColumn name="causeDeptId">
-              <Property name="property">causeDeptId</Property>
-            </DataColumn>
-            <DataColumn name="causeDept">
-              <Property name="property">causeDept</Property>
-            </DataColumn>
-            <DataColumn name="officeId">
-              <Property name="property">officeId</Property>
-            </DataColumn>
-            <DataColumn name="office">
-              <Property name="property">office</Property>
-            </DataColumn>
-            <DataColumn name="unitPrice">
-              <Property name="property">unitPrice</Property>
-            </DataColumn>
-            <DataColumn name="packetNumber">
-              <Property name="property">packetNumber</Property>
-            </DataColumn>
-            <DataColumn name="number">
-              <Property name="property">number</Property>
-            </DataColumn>
-            <DataColumn name="taxMoney">
-              <Property name="property">taxMoney</Property>
-            </DataColumn>
-            <DataColumn name="discount">
-              <Property name="property">discount</Property>
-            </DataColumn>
-            <DataColumn name="taxThousandMoney">
-              <Property name="property">taxThousandMoney</Property>
-            </DataColumn>
-            <DataColumn name="boxPrice">
-              <Property name="property">boxPrice</Property>
-            </DataColumn>
-            <DataColumn name="highPrice">
-              <Property name="property">highPrice</Property>
-            </DataColumn>
-            <DataColumn name="high">
-              <Property name="property">high</Property>
-            </DataColumn>
-            <DataColumn name="noHigh">
-              <Property name="property">noHigh</Property>
-            </DataColumn>
-            <DataColumn name="remarks">
-              <Property name="property">remarks</Property>
-            </DataColumn>
-          </DataGrid>
-        </Container>
-      </ControlTab>
-      <ControlTab>
         <Property name="caption">销量</Property>
         <Container>
           <ToolBar>
@@ -557,6 +474,89 @@
         </Container>
       </ControlTab>
       <ControlTab>
+        <Property name="caption">发货基础表</Property>
+        <Container>
+          <ToolBar>
+            <DataPilot>
+              <Property name="dataSet">dsSendOut</Property>
+            </DataPilot>
+          </ToolBar>
+          <DataSet id="dsSendOut">
+            <Property name="dataType">[SendOut]</Property>
+            <Property name="pageSize">20</Property>
+            <Property name="dataProvider">#pagingSendOut</Property>
+          </DataSet>
+          <DataGrid id="dgSendOut">
+            <Property name="dataSet">dsSendOut</Property>
+            <Property name="readOnly">true</Property>
+            <Property name="stretchColumnsMode">off</Property>
+            <DataColumn name="customerNO">
+              <Property name="property">customerNO</Property>
+            </DataColumn>
+            <DataColumn name="customer">
+              <Property name="property">customer</Property>
+            </DataColumn>
+            <DataColumn name="productId">
+              <Property name="property">productId</Property>
+            </DataColumn>
+            <DataColumn name="productName">
+              <Property name="property">productName</Property>
+            </DataColumn>
+            <DataColumn name="salesDocument">
+              <Property name="property">salesDocument</Property>
+            </DataColumn>
+            <DataColumn name="date">
+              <Property name="property">date</Property>
+            </DataColumn>
+            <DataColumn name="causeDeptId">
+              <Property name="property">causeDeptId</Property>
+            </DataColumn>
+            <DataColumn name="causeDept">
+              <Property name="property">causeDept</Property>
+            </DataColumn>
+            <DataColumn name="officeId">
+              <Property name="property">officeId</Property>
+            </DataColumn>
+            <DataColumn name="office">
+              <Property name="property">office</Property>
+            </DataColumn>
+            <DataColumn name="unitPrice">
+              <Property name="property">unitPrice</Property>
+            </DataColumn>
+            <DataColumn name="packetNumber">
+              <Property name="property">packetNumber</Property>
+            </DataColumn>
+            <DataColumn name="number">
+              <Property name="property">number</Property>
+            </DataColumn>
+            <DataColumn name="taxMoney">
+              <Property name="property">taxMoney</Property>
+            </DataColumn>
+            <DataColumn name="discount">
+              <Property name="property">discount</Property>
+            </DataColumn>
+            <DataColumn name="taxThousandMoney">
+              <Property name="property">taxThousandMoney</Property>
+            </DataColumn>
+            <DataColumn name="boxPrice">
+              <Property name="property">boxPrice</Property>
+            </DataColumn>
+            <DataColumn name="highPrice">
+              <Property name="property">highPrice</Property>
+            </DataColumn>
+            <DataColumn name="high">
+              <Property name="property">high</Property>
+            </DataColumn>
+            <DataColumn name="noHigh">
+              <Property name="property">noHigh</Property>
+            </DataColumn>
+            <DataColumn name="remarks">
+              <Property name="property">remarks</Property>
+            </DataColumn>
+          </DataGrid>
+        </Container>
+      </ControlTab>
+      <ControlTab>
         <Property name="caption">累计台账</Property>
         <Container>
           <ToolBar>
@@ -575,6 +575,7 @@
               <Property name="action">ajaxActionCallRule</Property>
               <Property name="icon">url(>skin>common/icons.gif) -180px -120px</Property>
             </Button>
+            <Fill/>
             <ToolBarButton>
               <Property name="caption">重置台账对象</Property>
               <Property name="action">ajaxActionResetLedger</Property>
