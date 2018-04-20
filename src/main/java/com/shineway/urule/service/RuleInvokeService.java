@@ -33,7 +33,9 @@ public class RuleInvokeService extends HibernateDao {
 	private static final String TESTCALCLEVEL = "poc/testCalcLevel";
 	private static final String TESTMORELEVEL = "poc/testMoreLevel";
 	private static final String TESTFLOWDIRE = "poc/testFlowDire";
+	private static final String TESTTHEROY = "poc/testTheroy";
 	private static final String CALCRESULTFLOW = "calcResultFlow";
+	//testHasOverplusFlow
 
 	@Resource(name = KnowledgeService.BEAN_ID)
 	private KnowledgeService knowledgeService;
@@ -116,31 +118,6 @@ public class RuleInvokeService extends HibernateDao {
 		flowDireAnalysis.setTotalOfOverJanToDec1(flowDireAnalysis.getTotalOfOverJanToNov1()+flowDireAnalysis.getFlowDireDec1());
 		flowDireAnalysis.setTotalOfOverJanToDec2(flowDireAnalysis.getTotalOfOverJanToNov2()+flowDireAnalysis.getFlowDireDec2());
 		// 计算是否消化完
-		// FlowDireAnalysis flowDireAnalysis = new FlowDireAnalysis();
-		// flowDireAnalysis.setFlowDireJan1(2345);
-		// flowDireAnalysis.setFlowDireJan2(4231);
-		// flowDireAnalysis.setFlowDireFeb1(2606);
-		// flowDireAnalysis.setFlowDireFeb2(2473);
-		// flowDireAnalysis.setFlowDireMar1(2623);
-		// flowDireAnalysis.setFlowDireMar2(2220);
-		// flowDireAnalysis.setFlowDireApri1(1363);
-		// flowDireAnalysis.setFlowDireApri2(1092);
-		// flowDireAnalysis.setFlowDireMay1(1784);
-		// flowDireAnalysis.setFlowDireMay2(1473);
-		// flowDireAnalysis.setFlowDireJun1(1145);
-		// flowDireAnalysis.setFlowDireJun2(1844);
-		// flowDireAnalysis.setFlowDireJul1(900);
-		// flowDireAnalysis.setFlowDireJul2(2000);
-		// flowDireAnalysis.setFlowDireAug1(1303);
-		// flowDireAnalysis.setFlowDireAug2(2125);
-		// flowDireAnalysis.setFlowDireSep1(4988);
-		// flowDireAnalysis.setFlowDireSep2(3553);
-		// flowDireAnalysis.setFlowDireOct1(0);
-		// flowDireAnalysis.setFlowDireOct2(0);
-		// flowDireAnalysis.setFlowDireNov1(9817);
-		// flowDireAnalysis.setFlowDireNov2(4590);
-		// flowDireAnalysis.setFlowDireDec1(5898);
-		// flowDireAnalysis.setFlowDireDec2(4709);
 		return flowDireAnalysis;
 	}
 
@@ -161,13 +138,6 @@ public class RuleInvokeService extends HibernateDao {
 		saleAnalysis.setSaleTotal2(saleAnalysis.getSaleTotal2()+saleAnalysis.getSaleJul2()+saleAnalysis.getSaleAug2());
 		saleAnalysis.setSaleTotal2(saleAnalysis.getSaleTotal2()+saleAnalysis.getSaleSep2()+saleAnalysis.getSaleOct2());
 		saleAnalysis.setSaleTotal2(saleAnalysis.getSaleTotal2()+saleAnalysis.getSaleNov2()+saleAnalysis.getSaleDec2());
-		/*
-		 * SaleAnalysis saleAnalysis = new SaleAnalysis();
-		 * saleAnalysis.setSaleDec1(2318);//计算本次计算、是否超发货
-		 * saleAnalysis.setSaleDec2(3386);
-		 * saleAnalysis.setSaleTotal1(15415);//计算扣除超发货
-		 * saleAnalysis.setSaleTotal2(22526);
-		 */
 		return saleAnalysis;
 	}
 
@@ -181,9 +151,7 @@ public class RuleInvokeService extends HibernateDao {
 		sendOutAnalysis.setSendOutTotal(sendOutAnalysis.getSendOutTotal()+sendOutAnalysis.getSendOutAug()+sendOutAnalysis.getSendOutSep());
 		sendOutAnalysis.setSendOutTotal(sendOutAnalysis.getSendOutTotal()+sendOutAnalysis.getSendOutOct()+sendOutAnalysis.getSendOutNov());
 		sendOutAnalysis.setSendOutTotal(sendOutAnalysis.getSendOutTotal()+sendOutAnalysis.getSendOutDec());
-		/*SendOutAnalysis sendOutAnalysis = new SendOutAnalysis();
-		sendOutAnalysis.setSendOutTotal(13800);// 计算是否消化完、计算理论售出\是否超发货
-*/		return sendOutAnalysis;
+    	return sendOutAnalysis;
 	}
 
 	private Object sqlQueryObject(Session session, Map<String, Object> params, String sql, Class<?> clazz) {
@@ -203,18 +171,66 @@ public class RuleInvokeService extends HibernateDao {
 	}
 
 	public void invoveRuleHighFlow(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void invoveRuleHasOverplus(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		
+		KnowledgePackage knowledgePackage;
+		try {
+			knowledgePackage = knowledgeService.getKnowledge("poc/testHasOverplusFlow");
+			KnowledgeSession session = KnowledgeSessionFactory.newKnowledgeSession(knowledgePackage);
+			// 统计流向基础数据
+			Session sessionHiber = this.getSessionFactory().openSession();
+			Ledger ledger = null;
+			try {
+				ledger = initLedger(sessionHiber, params);
+
+				FlowDireAnalysis direAnalysis = initFlowDireAnalysis(sessionHiber, params);
+				SaleAnalysis saleAnalysis = initSaleAnalysis(sessionHiber, params);
+				SendOutAnalysis sendOutAnalysis = initSendOutAnalysis(sessionHiber, params);
+				session.insert(ledger);
+				session.insert(direAnalysis);
+				session.insert(saleAnalysis);
+				session.insert(sendOutAnalysis);
+				session.startProcess("hasOverplusFlow", params);
+			} finally {
+				sessionHiber.flush();
+				sessionHiber.close();
+			}
+			System.out.println(ledger.getCalcResult1());
+			System.out.println(ledger.getCalcResult2());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
 	}
 
 	public void invoveRuleTheroySale(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		
+		KnowledgePackage knowledgePackage;
+		try {
+			knowledgePackage = knowledgeService.getKnowledge("poc/testTheroy");
+			KnowledgeSession session = KnowledgeSessionFactory.newKnowledgeSession(knowledgePackage);
+			// 统计流向基础数据
+			Session sessionHiber = this.getSessionFactory().openSession();
+			Ledger ledger = null;
+			try {
+				ledger = initLedger(sessionHiber, params);
+
+				FlowDireAnalysis direAnalysis = initFlowDireAnalysis(sessionHiber, params);
+				SaleAnalysis saleAnalysis = initSaleAnalysis(sessionHiber, params);
+				SendOutAnalysis sendOutAnalysis = initSendOutAnalysis(sessionHiber, params);
+				session.insert(ledger);
+				session.insert(direAnalysis);
+				session.insert(saleAnalysis);
+				session.insert(sendOutAnalysis);
+				session.startProcess("calcTheroySaleFlow", params);
+			} finally {
+				sessionHiber.flush();
+				sessionHiber.close();
+			}
+			System.out.println(ledger.getCalcResult1());
+			System.out.println(ledger.getCalcResult2());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
 	}
 
 	public void invoveRuleCalcLevel(Map<String, Object> params) {

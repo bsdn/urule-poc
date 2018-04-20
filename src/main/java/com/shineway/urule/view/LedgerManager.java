@@ -47,10 +47,7 @@ public class LedgerManager extends HibernateDao{
 	public void callRule(Map<String,Object> params){
     	ruleInvokeService.invove(params);
 	}
-    @Expose
-   	public void callRuleHighFlow(Map<String,Object> params){
-       	ruleInvokeService.invoveRuleHighFlow(params);
-   	}
+    
     @Expose
    	public void callRuleHasOverplus(Map<String,Object> params){
        	ruleInvokeService.invoveRuleHasOverplus(params);
@@ -60,15 +57,31 @@ public class LedgerManager extends HibernateDao{
        	ruleInvokeService.invoveRuleTheroySale(params);
    	}
     @Expose
+    public void resetLedger(Map<String,Object> params){
+    	String id = (String) params.get("id");
+    	Ledger ledger = (com.shineway.urule.model.Ledger) this.getSession().get(Ledger.class, id);
+    	ledger.setCalcLevel1(0D);
+    	ledger.setCalcLevel2(0D);
+    	ledger.setSalesTheory(0D);
+    	ledger.setCalcResult1(0D);
+    	ledger.setCalcResult2(0D);
+    	ledger.setHasOverplusCurMonth(null);
+    	ledger.setHasOverplusDec(null);
+    	ledger.setHasOverplusJanToNov(null);
+    	ledger.setMoreLevel1(0D);
+    	ledger.setMoreLevel2(0D);
+    	this.getSession().update(ledger);
+    }
+    @Expose
+    public void callRuleHighFlow(Map<String,Object> params){
+    }
+    @Expose
    	public void callRuleCalcLevel(Map<String,Object> params){
-       	ruleInvokeService.invoveRuleCalcLevel(params);
    	}
     @Expose
    	public void callRuleMoreLevel(Map<String,Object> params){
-       	ruleInvokeService.invoveRuleCalcLevel(params);
    	}
     @Expose
    	public void callRuleCalcResultLevel(Map<String,Object> params){
-       	ruleInvokeService.invoveRuleCalcResultLevel(params);
    	}
 }

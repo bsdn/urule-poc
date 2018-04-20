@@ -32,6 +32,7 @@
       <PropertyDef name="salesTheory">
         <Property name="dataType">Double</Property>
         <Property name="label">理论售出</Property>
+        <Property name="displayFormat">#,###.##</Property>
       </PropertyDef>
       <PropertyDef name="hasOverplusJanToNov">
         <Property></Property>
@@ -48,46 +49,57 @@
       <PropertyDef name="inventoryOpening1">
         <Property name="dataType">Double</Property>
         <Property name="label">一级</Property>
+        <Property name="displayFormat">#,###.##</Property>
       </PropertyDef>
       <PropertyDef name="inventoryOpening2">
         <Property name="dataType">Double</Property>
         <Property name="label">二级</Property>
+        <Property name="displayFormat">#,###.##</Property>
       </PropertyDef>
       <PropertyDef name="inventoryFinal">
         <Property name="dataType">Double</Property>
         <Property name="label">期末库存</Property>
+        <Property name="displayFormat">#,###.##</Property>
       </PropertyDef>
       <PropertyDef name="calcLevel1">
         <Property name="dataType">Double</Property>
         <Property name="label">一级</Property>
+        <Property name="displayFormat">#,###.##</Property>
       </PropertyDef>
       <PropertyDef name="calcLevel2">
         <Property name="dataType">Double</Property>
         <Property name="label">二级</Property>
+        <Property name="displayFormat">#,###.##</Property>
       </PropertyDef>
       <PropertyDef name="moreLevel1">
         <Property name="dataType">Double</Property>
         <Property name="label">一级</Property>
+        <Property name="displayFormat">#,###.##</Property>
       </PropertyDef>
       <PropertyDef name="moreLevel2">
         <Property name="dataType">Double</Property>
         <Property name="label">二级</Property>
+        <Property name="displayFormat">#,###.##</Property>
       </PropertyDef>
       <PropertyDef name="calcResult1">
         <Property name="dataType">Double</Property>
         <Property name="label">一级</Property>
+        <Property name="displayFormat">#,###.##</Property>
       </PropertyDef>
       <PropertyDef name="calcResult2">
         <Property name="dataType">Double</Property>
         <Property name="label">二级</Property>
+        <Property name="displayFormat">#,###.##</Property>
       </PropertyDef>
       <PropertyDef name="calcSaleJanToNov1">
         <Property name="dataType">Double</Property>
         <Property name="label">一级</Property>
+        <Property name="displayFormat">#,###.##</Property>
       </PropertyDef>
       <PropertyDef name="calcSaleJanToNov2">
         <Property name="dataType">Double</Property>
         <Property name="label">二级</Property>
+        <Property name="displayFormat">#,###.##</Property>
       </PropertyDef>
       <PropertyDef name="office">
         <Property></Property>
@@ -548,13 +560,26 @@
         <Property name="caption">累计台账</Property>
         <Container>
           <ToolBar>
-            <DataPilot>
-              <Property name="dataSet">dsLedger</Property>
-            </DataPilot>
             <Button>
-              <Property name="caption">调用规则引擎计算</Property>
-              <Property name="action">ajaxAction1</Property>
+              <Property name="caption">调用规则引擎计算是否消化完</Property>
+              <Property name="action">ajaxActionHasOverplus</Property>
+              <Property name="icon">url(>skin>common/icons.gif) -180px -120px</Property>
             </Button>
+            <Button>
+              <Property name="caption">调用规则引擎计算理论售出及本次计算</Property>
+              <Property name="action">ajaxActionTheroy</Property>
+              <Property name="icon">url(>skin>common/icons.gif) -180px -120px</Property>
+            </Button>
+            <Button>
+              <Property name="caption">调用规则引擎计算最终本次计算</Property>
+              <Property name="action">ajaxActionCallRule</Property>
+              <Property name="icon">url(>skin>common/icons.gif) -180px -120px</Property>
+            </Button>
+            <ToolBarButton>
+              <Property name="caption">重置台账对象</Property>
+              <Property name="action">ajaxActionResetLedger</Property>
+              <Property name="icon">url(>skin>common/icons.gif) -220px -240px</Property>
+            </ToolBarButton>
           </ToolBar>
           <DataSet id="dsLedger">
             <Property name="dataProvider">#paging</Property>
@@ -604,10 +629,12 @@
               <DataColumn name="hasOverplusDec">
                 <Property name="property">hasOverplusDec</Property>
                 <Property name="caption">12月</Property>
+                <Property name="align">center</Property>
               </DataColumn>
               <DataColumn name="hasOverplusCurMonth">
                 <Property name="property">hasOverplusCurMonth</Property>
                 <Property name="caption">当月</Property>
+                <Property name="align">center</Property>
               </DataColumn>
             </ColumnGroup>
             <ColumnGroup>
@@ -661,11 +688,35 @@
               </DataColumn>
             </ColumnGroup>
           </DataGrid>
-          <AjaxAction id="ajaxAction1">
+          <AjaxAction id="ajaxActionCallRule">
             <ClientEvent name="beforeExecute">var json = view.get(&quot;#dsLedger&quot;).getData(&quot;#&quot;).toJSON();&#xD;
 self.set(&quot;parameter&quot;, json);</ClientEvent>
+            <ClientEvent name="onSuccess">view.get(&quot;#dsLedger&quot;).flushAsync();</ClientEvent>
             <Property name="service">#callRule</Property>
           </AjaxAction>
+          <AjaxAction id="ajaxActionTheroy">
+            <ClientEvent name="beforeExecute">var json = view.get(&quot;#dsLedger&quot;).getData(&quot;#&quot;).toJSON();&#xD;
+self.set(&quot;parameter&quot;, json);</ClientEvent>
+            <ClientEvent name="onSuccess">view.get(&quot;#dsLedger&quot;).flushAsync();</ClientEvent>
+            <Property name="service">#callRuleTheroySale</Property>
+          </AjaxAction>
+          <AjaxAction id="ajaxActionHasOverplus">
+            <ClientEvent name="beforeExecute">var json = view.get(&quot;#dsLedger&quot;).getData(&quot;#&quot;).toJSON();&#xD;
+self.set(&quot;parameter&quot;, json);</ClientEvent>
+            <ClientEvent name="onSuccess">view.get(&quot;#dsLedger&quot;).flushAsync();</ClientEvent>
+            <Property name="service">#callRuleHasOverplus</Property>
+          </AjaxAction>
+          <AjaxAction id="ajaxActionResetLedger">
+            <ClientEvent name="beforeExecute">var json = view.get(&quot;#dsLedger&quot;).getData(&quot;#&quot;).toJSON();&#xD;
+self.set(&quot;parameter&quot;, json);</ClientEvent>
+            <ClientEvent name="onSuccess">view.get(&quot;#dsLedger&quot;).flushAsync();</ClientEvent>
+            <Property name="service">#resetLedger</Property>
+          </AjaxAction>
+          <Container layoutConstraint="bottom">
+            <DataPilot layoutConstraint="right">
+              <Property name="dataSet">dsLedger</Property>
+            </DataPilot>
+          </Container>
         </Container>
       </ControlTab>
     </TabControl>
