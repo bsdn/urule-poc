@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<input type="button" value="clickme" onclick="Test()"/>
+<script type="text/javascript">
+function Test(){
+	   parent.showTaskIndicator();
+	   parent.viewMain.id("dataSet1").flushAsync(function(){
+		   parent.hideTaskIndicator();
+	   });
+   }
+</script>
+</body>
+</html>

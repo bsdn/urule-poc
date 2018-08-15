@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model/>
+  <View>
+    <ClientEvent name="onCreate">window.showTaskIndicator=function(msg){&#xD;
+	if(!msg){&#xD;
+		msg = &quot;请稍候&quot;;&#xD;
+	}&#xD;
+	var taskId = dorado.util.TaskIndicator.showTaskIndicator(msg, &quot;main&quot;);&#xD;
+    window.$TaskId=taskId;&#xD;
+}&#xD;
+window.hideTaskIndicator=function(){&#xD;
+	dorado.util.TaskIndicator.hideTaskIndicator(window.$TaskId);&#xD;
+}</ClientEvent>
+    <Button>
+      <ClientEvent name="onClick">window.showTaskIndicator();</ClientEvent>
+      <Property name="caption">show</Property>
+    </Button>
+    <Button>
+      <ClientEvent name="onClick">window.hideTaskIndicator();</ClientEvent>
+      <Property name="caption">hide</Property>
+    </Button>
+    <HtmlContainer>
+      <Property name="content">hello</Property>
+      <Property name="height">200</Property>
+    </HtmlContainer>
+    <IFrame>
+      <Property name="path">test.html</Property>
+    </IFrame>
+    <AjaxAction id="ajaxAction1">
+      <Property name="service">jobTestor#test</Property>
+    </AjaxAction>
+    <DataSet id="dataSet1">
+      <Property name="dataProvider">jobTestor#testDS</Property>
+    </DataSet>
+  </View>
+</ViewConfig>
