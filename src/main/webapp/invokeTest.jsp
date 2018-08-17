@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Welcome</title>
+<title>urule call test</title>
 </head>
 <body>
 	<%
@@ -36,10 +36,14 @@
 			mainobj.setName("name1");
 			mainobj.setOrders(list);
 			Map<String, Object> params = new HashMap<String, Object>();
-			params.put("a", list);
-			params.put("b", "sss");
-			ses.insert(mainobj);
+			params.put("orders", list);
+			params.put("name", "sss");
+            ses.insert(mainobj);
 			ses.fireRules();
+			out.println("obj测试<br/>");
+			ses.insert(params);
+			ses.fireRules();
+			out.println("map测试<br/>");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
